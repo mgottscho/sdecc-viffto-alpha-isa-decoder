@@ -14,85 +14,102 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
     case 0x8:  
       // LoadAddress::lda([' Ra = Rb + disp; '],{})
       
-          return new Lda(machInst);
+          std::cout << "lda" << std::endl;
+          return 0; // Lda(machInst);
       break;
     
     case 0x9:  
       // LoadAddress::ldah([' Ra = Rb + (disp << 16); '],{})
       
-          return new Ldah(machInst);
+          std::cout << "ldah" << std::endl;
+          return 0; // Ldah(machInst);
       break;
     
     case 0xa:  
       // LoadOrNop::ldbu([' Ra_uq = Mem_ub; '],{})
       
-       {
-           AlphaStaticInst *i = new Ldbu(machInst);
+       //{
+       //    AlphaStaticInst *i = new Ldbu(machInst);
            if (RA == 31) {
-               i = makeNop(i);
-           }
-           return i;
-       }
+               //i = makeNop(i);
+               std::cout << "nop" << std::endl;
+           } else
+               std::cout << "ldbu" << std::endl;
+        //   return i;
+       //}
+       return 0;
       break;
     
     case 0xc:  
       // LoadOrNop::ldwu([' Ra_uq = Mem_uw; '],{})
       
-       {
-           AlphaStaticInst *i = new Ldwu(machInst);
+       //{
+           //AlphaStaticInst *i = new Ldwu(machInst);
            if (RA == 31) {
-               i = makeNop(i);
-           }
-           return i;
-       }
+            //   i = makeNop(i);
+               std::cout << "nop" << std::endl;
+           } else
+               std::cout << "ldwu" << std::endl;
+           //return i;
+       //}
+       return 0;
       break;
     
     case 0xb:  
+    //MWG PICK UP WORK HERE
       // LoadOrNop::ldq_u([' Ra = Mem_uq; '],{'ea_code': ' EA = (Rb + disp) & ~7; '})
       
-       {
+       /*{
            AlphaStaticInst *i = new Ldq_u(machInst);
            if (RA == 31) {
                i = makeNop(i);
            }
            return i;
-       }
+       }*/
+       std::cout << "ldq_u" << std::endl;
+       return 0;
       break;
     
     case 0x23:  
       // LoadOrNop::ldt([' Fa = Mem_df; '],{})
       
-       {
+       /*{
            AlphaStaticInst *i = new Ldt(machInst);
            if (RA == 31) {
                i = makeNop(i);
            }
            return i;
-       }
+       }*/
+       std::cout << "ldt" << std::endl;
+       return 0;
       break;
     
     case 0x2a:  
       // LoadOrNop::ldl_l([' Ra_sl = Mem_sl; '],{'mem_flags': 'LLSC'})
       
-       {
+       /*{
            AlphaStaticInst *i = new Ldl_l(machInst);
            if (RA == 31) {
                i = makeNop(i);
            }
            return i;
-       }
+       }*/
+       std::cout << "ldl_l" << std::endl;
+       return 0;
       break;
     
     case 0x2b:  
       // LoadOrNop::ldq_l([' Ra_uq = Mem_uq; '],{'mem_flags': 'LLSC'})
       
-       {
+       /*{
            AlphaStaticInst *i = new Ldq_l(machInst);
            if (RA == 31) {
                i = makeNop(i);
            }
            return i;
-       }
+       }*/
+       std::cout << "ldq_l" << std::endl;
+       return 0;
       break;
     
     case 0x28:  
@@ -100,10 +117,10 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
       
        {
            if (RA != 31) {
-               return new Ldl(machInst);
+               std::cout << "ldl" << std::endl; return 0; // Ldl(machInst);
            }
            else {
-               return new LdlPrefetch(machInst);
+               std::cout << "ldlprefetch" << std::endl; return 0; // LdlPrefetch(machInst);
            }
        }
       break;
@@ -113,10 +130,10 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
       
        {
            if (RA != 31) {
-               return new Ldq(machInst);
+               std::cout << "ldq" << std::endl; return 0; // Ldq(machInst);
            }
            else {
-               return new LdqPrefetch(machInst);
+               std::cout << "ldqprefetch" << std::endl; return 0; // LdqPrefetch(machInst);
            }
        }
       break;
@@ -126,10 +143,10 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
       
        {
            if (RA != 31) {
-               return new Lds(machInst);
+               std::cout << "lds" << std::endl; return 0; // Lds(machInst);
            }
            else {
-               return new LdsPrefetch(machInst);
+               std::cout << "ldsprefetch" << std::endl; return 0; // LdsPrefetch(machInst);
            }
        }
       break;
@@ -137,55 +154,55 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
     case 0xe:  
       // Store::stb([' Mem_ub = Ra<7:0>; '],{})
       
-          return new Stb(machInst);
+          std::cout << "stb" << std::endl; return 0; // Stb(machInst);
       break;
     
     case 0xd:  
       // Store::stw([' Mem_uw = Ra<15:0>; '],{})
       
-          return new Stw(machInst);
+          std::cout << "stw" << std::endl; return 0; // Stw(machInst);
       break;
     
     case 0x2c:  
       // Store::stl([' Mem_ul = Ra<31:0>; '],{})
       
-          return new Stl(machInst);
+          std::cout << "stl" << std::endl; return 0; // Stl(machInst);
       break;
     
     case 0x2d:  
       // Store::stq([' Mem_uq = Ra_uq; '],{})
       
-          return new Stq(machInst);
+          std::cout << "stq" << std::endl; return 0; // Stq(machInst);
       break;
     
     case 0xf:  
       // Store::stq_u([' Mem_uq = Ra_uq; ', ' EA = (Rb + disp) & ~7; '],{})
       
-          return new Stq_u(machInst);
+          std::cout << "stq_u" << std::endl; return 0; // Stq_u(machInst);
       break;
     
     case 0x26:  
       // Store::sts([' Mem_ul = t_to_s(Fa_uq); '],{})
       
-          return new Sts(machInst);
+          std::cout << "sts" << std::endl; return 0; // Sts(machInst);
       break;
     
     case 0x27:  
       // Store::stt([' Mem_df = Fa; '],{})
       
-          return new Stt(machInst);
+          std::cout << "stt" << std::endl; return 0; // Stt(machInst);
       break;
     
     case 0x2e:  
       // StoreCond::stl_c([' Mem_ul = Ra<31:0>; ', '\n                        uint64_t tmp = write_result;\n                        // see stq_c\n                        Ra = (tmp == 0 || tmp == 1) ? tmp : Ra;\n                        if (tmp == 1) {\n                            xc->setStCondFailures(0);\n                        }\n                    '],{'inst_flags': 'IsStoreConditional', 'mem_flags': 'LLSC'})
       
-          return new Stl_c(machInst);
+          std::cout << "stl_c" << std::endl; return 0; // Stl_c(machInst);
       break;
     
     case 0x2f:  
       // StoreCond::stq_c([' Mem_uq = Ra; ', "\n                        uint64_t tmp = write_result;\n                        // If the write operation returns 0 or 1, then\n                        // this was a conventional store conditional,\n                        // and the value indicates the success/failure\n                        // of the operation.  If another value is\n                        // returned, then this was a Turbolaser\n                        // mailbox access, and we don't update the\n                        // result register at all.\n                        Ra = (tmp == 0 || tmp == 1) ? tmp : Ra;\n                        if (tmp == 1) {\n                            // clear failure counter... this is\n                            // non-architectural and for debugging\n                            // only.\n                            xc->setStCondFailures(0);\n                        }\n                    "],{'inst_flags': 'IsStoreConditional', 'mem_flags': 'LLSC'})
       
-          return new Stq_c(machInst);
+          std::cout << "stq_c" << std::endl; return 0; // Stq_c(machInst);
       break;
     
     case 0x10:
@@ -194,15 +211,19 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         case 0x0:  
           // IntegerOperate::addl([' Rc_sl = Ra_sl + Rb_or_imm_sl; '],{})
           
-           {
-               AlphaStaticInst *i =
-                   (IMM) ? (AlphaStaticInst *)new AddlImm(machInst)
-                         : (AlphaStaticInst *)new Addl(machInst);
+           //{
+               //AlphaStaticInst *i =
+                   //(IMM) ? (AlphaStaticInst *)new AddlImm(machInst)
+                         //: (AlphaStaticInst *)new Addl(machInst);
+                   (IMM) ? std::cout << "addlimm" << std::endl;
+                         : std::cout << "addl" << std::endl;
                if (RC == 31) {
                    i = makeNop(i);
+                   std::cout << "nop" << std::endl;
                }
-               return i;
-           }
+               //return i;
+           //}
+           return 0;
           break;
         
         case 0x40:  
@@ -502,7 +523,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         default:
           
           // Unknown::unknown(([], {}))
-          return new Unknown(machInst);
+          std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
           break;
         }
       
@@ -725,7 +746,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
             default:
               
               // Unknown::unknown(([], {}))
-              return new Unknown(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
               break;
             }
           
@@ -753,34 +774,34 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                     default:
                       
                       // Unknown::unknown(([], {}))
-                      return new Unknown(machInst);
+                      std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
                       break;
                     }
                   
                 default:
                   
                   // Unknown::unknown(([], {}))
-                  return new Unknown(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
                   break;
                 }
               
             default:
               
               // Unknown::unknown(([], {}))
-              return new Unknown(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
               break;
             }
           
         case 0x25:  
           // WarnUnimpl::eleven25(([], {}))
-          
-              return new WarnUnimplemented("eleven25", machInst);
+                
+              std::cout << "eleven25" << std::endl; return 0; // WarnUnimplemented("eleven25", machInst);
           break;
         
         default:
           
           // Unknown::unknown(([], {}))
-          return new Unknown(machInst);
+          std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
           break;
         }
       
@@ -1154,7 +1175,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         default:
           
           // Unknown::unknown(([], {}))
-          return new Unknown(machInst);
+          std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
           break;
         }
       
@@ -1234,7 +1255,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         default:
           
           // Unknown::unknown(([], {}))
-          return new Unknown(machInst);
+          std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
           break;
         }
       
@@ -1261,7 +1282,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
             default:
               
               // Unknown::unknown(([], {}))
-              return new Unknown(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
               break;
             }
           
@@ -1285,7 +1306,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
             default:
               
               // Unknown::unknown(([], {}))
-              return new Unknown(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
               break;
             }
           
@@ -1499,7 +1520,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
             default:
               
               // Unknown::unknown(([], {}))
-              return new Unknown(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
               break;
             }
           
@@ -1521,99 +1542,99 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
             default:
               
               // Unknown::unknown(([], {}))
-              return new Unknown(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
               break;
             }
           
         default:
           
           // Unknown::unknown(([], {}))
-          return new Unknown(machInst);
+          std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
           break;
         }
       
     case 0x39:  
       // CondBranch::beq([' cond = (Ra == 0); '],{})
       
-          return new Beq(machInst);
+          std::cout << "beq" << std::endl; return 0; // Beq(machInst);
       break;
     
     case 0x3d:  
       // CondBranch::bne([' cond = (Ra != 0); '],{})
       
-          return new Bne(machInst);
+          std::cout << "bne" << std::endl; return 0; // Bne(machInst);
       break;
     
     case 0x3e:  
       // CondBranch::bge([' cond = (Ra_sq >= 0); '],{})
       
-          return new Bge(machInst);
+          std::cout << "bge" << std::endl; return 0; // Bge(machInst);
       break;
     
     case 0x3f:  
       // CondBranch::bgt([' cond = (Ra_sq >  0); '],{})
       
-          return new Bgt(machInst);
+          std::cout << "bgt" << std::endl; return 0; // Bgt(machInst);
       break;
     
     case 0x3b:  
       // CondBranch::ble([' cond = (Ra_sq <= 0); '],{})
       
-          return new Ble(machInst);
+          std::cout << "ble" << std::endl; return 0; // Ble(machInst);
       break;
     
     case 0x3a:  
       // CondBranch::blt([' cond = (Ra_sq < 0); '],{})
       
-          return new Blt(machInst);
+          std::cout << "blt" << std::endl; return 0; // Blt(machInst);
       break;
     
     case 0x38:  
       // CondBranch::blbc([' cond = ((Ra & 1) == 0); '],{})
       
-          return new Blbc(machInst);
+          std::cout << "blbc" << std::endl; return 0; // Blbc(machInst);
       break;
     
     case 0x3c:  
       // CondBranch::blbs([' cond = ((Ra & 1) == 1); '],{})
       
-          return new Blbs(machInst);
+          std::cout << "blbs" << std::endl; return 0; // Blbs(machInst);
       break;
     
     case 0x31:  
       // CondBranch::fbeq([' cond = (Fa == 0); '],{})
       
-          return new Fbeq(machInst);
+          std::cout << "fbeq" << std::endl; return 0; // Fbeq(machInst);
       break;
     
     case 0x35:  
       // CondBranch::fbne([' cond = (Fa != 0); '],{})
       
-          return new Fbne(machInst);
+          std::cout << "fbne" << std::endl; return 0; // Fbne(machInst);
       break;
     
     case 0x36:  
       // CondBranch::fbge([' cond = (Fa >= 0); '],{})
       
-          return new Fbge(machInst);
+          std::cout << "fbge" << std::endl; return 0; // Fbge(machInst);
       break;
     
     case 0x37:  
       // CondBranch::fbgt([' cond = (Fa >  0); '],{})
       
-          return new Fbgt(machInst);
+          std::cout << "fbgt" << std::endl; return 0; // Fbgt(machInst);
       break;
     
     case 0x33:  
       // CondBranch::fble([' cond = (Fa <= 0); '],{})
       
-          return new Fble(machInst);
+          std::cout << "fble" << std::endl; return 0; // Fble(machInst);
       break;
     
     case 0x32:  
       // CondBranch::fblt([' cond = (Fa < 0); '],{})
       
-          return new Fblt(machInst);
+          std::cout << "fblt" << std::endl; return 0; // Fblt(machInst);
       break;
     
     case 0x30:  
@@ -1670,7 +1691,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         default:
           
           // Unknown::unknown(([], {}))
-          return new Unknown(machInst);
+          std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
           break;
         }
       
@@ -1710,20 +1731,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                 case 0x14:  
                   // FailUnimpl::itoff(([], {}))
                   
-                      return new FailUnimplemented("itoff", machInst);
+                      std::cout << "itoff" << std::endl; return 0; // FailUnimplemented("itoff", machInst);
                   break;
                 
                 default:
                   
                   // Unknown::unknown(([], {}))
-                  return new Unknown(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
                   break;
                 }
               
             default:
               
               // Unknown::unknown(([], {}))
-              return new Unknown(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
               break;
             }
           
@@ -1775,27 +1796,27 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                 default:
                   
                   // Unknown::unknown(([], {}))
-                  return new Unknown(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
                   break;
                 }
               
             default:
               
               // Unknown::unknown(([], {}))
-              return new Unknown(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
               break;
             }
           
         case 0xa:  
           // FailUnimpl::sqrtfg(([], {}))
           
-              return new FailUnimplemented("sqrtfg", machInst);
+              std::cout << "sqrtfg" << std::endl; return 0; // FailUnimplemented("sqrtfg", machInst);
           break;
         
         default:
           
           // Unknown::unknown(([], {}))
-          return new Unknown(machInst);
+          std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
           break;
         }
       
@@ -1958,14 +1979,14 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                 default:
                   
                   // Unknown::unknown(([], {}))
-                  return new Unknown(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
                   break;
                 }
               
             default:
               
               // Unknown::unknown(([], {}))
-              return new Unknown(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
               break;
             }
           
@@ -2023,7 +2044,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
             default:
               
               // Unknown::unknown(([], {}))
-              return new Unknown(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
               break;
             }
           
@@ -2119,7 +2140,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                     default:
                       
                       // Unknown::unknown(([], {}))
-                      return new Unknown(machInst);
+                      std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
                       break;
                     }
                   
@@ -2141,28 +2162,28 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                     default:
                       
                       // Unknown::unknown(([], {}))
-                      return new Unknown(machInst);
+                      std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
                       break;
                     }
                   
                 default:
                   
                   // Unknown::unknown(([], {}))
-                  return new Unknown(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
                   break;
                 }
               
             default:
               
               // Unknown::unknown(([], {}))
-              return new Unknown(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
               break;
             }
           
         default:
           
           // Unknown::unknown(([], {}))
-          return new Unknown(machInst);
+          std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
           break;
         }
       
@@ -2340,7 +2361,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         default:
           
           // Unknown::unknown(([], {}))
-          return new Unknown(machInst);
+          std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
           break;
         }
       
@@ -2350,55 +2371,55 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         case 0x8000:  
           // WarnUnimpl::fetch([],{})
           
-              return new WarnUnimplemented("fetch", machInst);
+              std::cout << "fetch" << std::endl; return 0; // WarnUnimplemented("fetch", machInst);
           break;
         
         case 0xa000:  
           // WarnUnimpl::fetch_m([],{})
           
-              return new WarnUnimplemented("fetch_m", machInst);
+              std::cout << "fetch_m" << std::endl; return 0; // WarnUnimplemented("fetch_m", machInst);
           break;
         
         case 0xe800:  
           // WarnUnimpl::ecb([],{})
           
-              return new WarnUnimplemented("ecb", machInst);
+              std::cout << "ecb" << std::endl; return 0; // WarnUnimplemented("ecb", machInst);
           break;
         
         case 0xf800:  
           // MiscPrefetch::wh64([' EA = Rb & ~ULL(63); ', ' ; '],{'mem_flags': 'PREFETCH'})
           
-              return new Wh64(machInst);
+              std::cout << "wh64" << std::endl; return 0; // Wh64(machInst);
           break;
         
         case 0xc000:  
           // BasicOperate::rpcc(['\n                /* Rb is a fake dependency so here is a fun way to get\n                 * the parser to understand that.\n                 */\n                uint64_t unused_var M5_VAR_USED = Rb;\n                Ra = FullSystem ? xc->readMiscReg(IPR_CC) : curTick();\n            ', 'IsUnverifiable'],{})
           
-              return new Rpcc(machInst);
+              std::cout << "rpcc" << std::endl; return 0; // Rpcc(machInst);
           break;
         
         case 0x0:  
           // BasicOperate::trapb([' ', 'IsSerializing', 'IsSerializeBefore', 'No_OpClass'],{})
           
-              return new Trapb(machInst);
+              std::cout << "trapb" << std::endl; return 0; // Trapb(machInst);
           break;
         
         case 0x400:  
           // BasicOperate::excb([' ', 'IsSerializing', 'IsSerializeBefore', 'No_OpClass'],{})
           
-              return new Excb(machInst);
+              std::cout << "excb" << std::endl; return 0; // Excb(machInst);
           break;
         
         case 0x4000:  
           // BasicOperate::mb([' ', 'IsMemBarrier', 'MemReadOp'],{})
           
-              return new Mb(machInst);
+              std::cout << "mb" << std::endl; return 0; // Mb(machInst);
           break;
         
         case 0x4400:  
           // BasicOperate::wmb([' ', 'IsWriteBarrier', 'MemWriteOp'],{})
           
-              return new Wmb(machInst);
+              std::cout << "wmb" << std::endl; return 0; // Wmb(machInst);
           break;
         
         case 0xe000:
@@ -2407,13 +2428,13 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
             case 0x0:  
               // FailUnimpl::rc_se(([], {}))
               
-                  return new FailUnimplemented("rc_se", machInst);
+                  std::cout << "rc_se" << std::endl; return 0; // FailUnimplemented("rc_se", machInst);
               break;
             
             default:  
               // BasicOperate::rc((['\n                Ra = IntrFlag;\n                IntrFlag = 0;\n            ', 'IsNonSpeculative', 'IsUnverifiable'], {}))
               
-                  return new Rc(machInst);
+                  std::cout << "rc" << std::endl; return 0; // Rc(machInst);
               break;
             }
           
@@ -2423,20 +2444,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
             case 0x0:  
               // FailUnimpl::rs_se(([], {}))
               
-                  return new FailUnimplemented("rs_se", machInst);
+                  std::cout << "rs_se" << std::endl; return 0; // FailUnimplemented("rs_se", machInst);
               break;
             
             default:  
               // BasicOperate::rs((['\n                Ra = IntrFlag;\n                IntrFlag = 1;\n            ', 'IsNonSpeculative', 'IsUnverifiable'], {}))
               
-                  return new Rs(machInst);
+                  std::cout << "rs" << std::endl; return 0; // Rs(machInst);
               break;
             }
           
         default:
           
           // Unknown::unknown(([], {}))
-          return new Unknown(machInst);
+          std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
           break;
         }
       
@@ -2449,38 +2470,38 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
             case 0x0:  
               // EmulatedCallPal::halt(['\n                    exitSimLoop("halt instruction encountered");\n                ', 'IsNonSpeculative'],{})
               
-                  return new Halt(machInst);
+                  std::cout << "halt" << std::endl; return 0; // Halt(machInst);
               break;
             
             case 0x83:  
               // EmulatedCallPal::callsys(['\n                    xc->syscall(R0);\n                ', 'IsSerializeAfter', 'IsNonSpeculative', 'IsSyscall'],{})
               
-                  return new Callsys(machInst);
+                  std::cout << "callsys" << std::endl; return 0; // Callsys(machInst);
               break;
             
             case 0x9e:  
               // EmulatedCallPal::rduniq([' R0 = Runiq; ', 'IsIprAccess'],{})
               
-                  return new Rduniq(machInst);
+                  std::cout << "rduniq" << std::endl; return 0; // Rduniq(machInst);
               break;
             
             case 0x9f:  
               // EmulatedCallPal::wruniq([' Runiq = R16; ', 'IsIprAccess'],{})
               
-                  return new Wruniq(machInst);
+                  std::cout << "wruniq" << std::endl; return 0; // Wruniq(machInst);
               break;
             
             default:
               
               // Unknown::unknown(([], {}))
-              return new Unknown(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
               break;
             }
           
         default:  
           // CallPal::call_pal((['\n            if (!palValid ||\n                (palPriv\n                 && xc->readMiscReg(IPR_ICM) != mode_kernel)) {\n                // invalid pal function code, or attempt to do privileged\n                // PAL call in non-kernel mode\n                fault = new UnimplementedOpcodeFault;\n            } else {\n                // check to see if simulator wants to do something special\n                // on this PAL call (including maybe suppress it)\n                bool dopal = xc->simPalCheck(palFunc);\n\n                if (dopal) {\n                    xc->setMiscReg(IPR_EXC_ADDR, NPC);\n                    NPC = xc->readMiscReg(IPR_PAL_BASE) + palOffset;\n                }\n            }\n        ', 'IsNonSpeculative'], {}))
           
-              return new Call_pal(machInst);
+              std::cout << "call_pal" << std::endl; return 0; // Call_pal(machInst);
           break;
         }
       
@@ -2489,7 +2510,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         
         case 0x0:  
           // OpcdecFault::hw_st_quad(([], {}))
-          return new OpcdecFault(machInst);
+          std::cout << "opcdecfault" << std::endl; return 0; // OpcdecFault(machInst);
           break;
         
         case 0x1:
@@ -2498,26 +2519,26 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
             case 0x0:  
               // HwLoad::hw_ld([' EA = (Rb + disp) & ~3; ', ' Ra = Mem_ul; ', 'L', 'IsSerializing', 'IsSerializeBefore'],{})
               
-                  return new Hw_ldL(machInst);
+                  std::cout << "hw_ldl" << std::endl; return 0; // Hw_ldL(machInst);
               break;
             
             case 0x1:  
               // HwLoad::hw_ld([' EA = (Rb + disp) & ~7; ', ' Ra = Mem_uq; ', 'Q', 'IsSerializing', 'IsSerializeBefore'],{})
               
-                  return new Hw_ldQ(machInst);
+                  std::cout << "hw_ldq" << std::endl; return 0; // Hw_ldQ(machInst);
               break;
             
             default:
               
               // Unknown::unknown(([], {}))
-              return new Unknown(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
               break;
             }
           
         default:
           
           // Unknown::unknown(([], {}))
-          return new Unknown(machInst);
+          std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
           break;
         }
       
@@ -2526,7 +2547,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         
         case 0x0:  
           // OpcdecFault::hw_st_cond(([], {}))
-          return new OpcdecFault(machInst);
+          std::cout << "opcdecfault" << std::endl; return 0; // OpcdecFault(machInst);
           break;
         
         case 0x1:
@@ -2538,39 +2559,39 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                 case 0x0:  
                   // HwStore::hw_st([' EA = (Rb + disp) & ~3; ', ' Mem_ul = Ra<31:0>; ', 'L', 'IsSerializing', 'IsSerializeBefore'],{})
                   
-                      return new Hw_stL(machInst);
+                      std::cout << "hw_stl" << std::endl; return 0; // Hw_stL(machInst);
                   break;
                 
                 case 0x1:  
                   // HwStore::hw_st([' EA = (Rb + disp) & ~7; ', ' Mem_uq = Ra_uq; ', 'Q', 'IsSerializing', 'IsSerializeBefore'],{})
                   
-                      return new Hw_stQ(machInst);
+                      std::cout << "hw_stq" << std::endl; return 0; // Hw_stQ(machInst);
                   break;
                 
                 default:
                   
                   // Unknown::unknown(([], {}))
-                  return new Unknown(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
                   break;
                 }
               
             case 0x1:  
               // FailUnimpl::hw_st_cond(([], {}))
               
-                  return new FailUnimplemented("hw_st_cond", machInst);
+                  std::cout << "hw_st_cond" << std::endl; return 0; // FailUnimplemented("hw_st_cond", machInst);
               break;
             
             default:
               
               // Unknown::unknown(([], {}))
-              return new Unknown(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
               break;
             }
           
         default:
           
           // Unknown::unknown(([], {}))
-          return new Unknown(machInst);
+          std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
           break;
         }
       
@@ -2579,19 +2600,19 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         
         case 0x0:  
           // OpcdecFault::hw_mfpr(([], {}))
-          return new OpcdecFault(machInst);
+          std::cout << "opcdecfault" << std::endl; return 0; // OpcdecFault(machInst);
           break;
         
         case 0x1:  
           // HwMoveIPR::hw_mfpr(['\n                int miscRegIndex = (ipr_index < MaxInternalProcRegs) ?\n                        IprToMiscRegIndex[ipr_index] : -1;\n                if(miscRegIndex < 0 || !IprIsReadable(miscRegIndex) ||\n                    miscRegIndex >= NumInternalProcRegs)\n                        fault = new UnimplementedOpcodeFault;\n                else\n                    Ra = xc->readMiscReg(miscRegIndex);\n            ', 'IsIprAccess'],{})
           
-              return new Hw_mfpr(machInst);
+              std::cout << "hw_mfpr" << std::endl; return 0; // Hw_mfpr(machInst);
           break;
         
         default:
           
           // Unknown::unknown(([], {}))
-          return new Unknown(machInst);
+          std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
           break;
         }
       
@@ -2600,19 +2621,19 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         
         case 0x0:  
           // OpcdecFault::hw_mtpr(([], {}))
-          return new OpcdecFault(machInst);
+          std::cout << "opcdecfault" << std::endl; return 0; // OpcdecFault(machInst);
           break;
         
         case 0x1:  
           // HwMoveIPR::hw_mtpr(['\n                int miscRegIndex = (ipr_index < MaxInternalProcRegs) ?\n                        IprToMiscRegIndex[ipr_index] : -1;\n                if(miscRegIndex < 0 || !IprIsWritable(miscRegIndex) ||\n                    miscRegIndex >= NumInternalProcRegs)\n                        fault = new UnimplementedOpcodeFault;\n                else\n                    xc->setMiscReg(miscRegIndex, Ra);\n                if (traceData) { traceData->setData(Ra); }\n            ', 'IsIprAccess'],{})
           
-              return new Hw_mtpr(machInst);
+              std::cout << "hw_mtpr" << std::endl; return 0; // Hw_mtpr(machInst);
           break;
         
         default:
           
           // Unknown::unknown(([], {}))
-          return new Unknown(machInst);
+          std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
           break;
         }
       
@@ -2621,19 +2642,19 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         
         case 0x0:  
           // OpcdecFault::hw_rei(([], {}))
-          return new OpcdecFault(machInst);
+          std::cout << "opcdecfault" << std::endl; return 0; // OpcdecFault(machInst);
           break;
         
         case 0x1:  
           // BasicOperate::hw_rei([' xc->hwrei(); ', 'IsSerializing', 'IsSerializeBefore'],{})
           
-              return new Hw_rei(machInst);
+              std::cout << "hw_rei" << std::endl; return 0; // Hw_rei(machInst);
           break;
         
         default:
           
           // Unknown::unknown(([], {}))
-          return new Unknown(machInst);
+          std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
           break;
         }
       
@@ -2643,133 +2664,133 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         case 0x0:  
           // BasicOperate::arm(['\n                PseudoInst::arm(xc->tcBase());\n            ', 'IsNonSpeculative'],{})
           
-              return new Arm(machInst);
+              std::cout << "arm" << std::endl; return 0; // Arm(machInst);
           break;
         
         case 0x1:  
           // BasicOperate::quiesce(["\n                // Don't sleep if (unmasked) interrupts are pending\n                Interrupts* interrupts =\n                    xc->tcBase()->getCpuPtr()->getInterruptController();\n                if (interrupts->checkInterrupts(xc->tcBase())) {\n                    PseudoInst::quiesceSkip(xc->tcBase());\n                } else {\n                    PseudoInst::quiesce(xc->tcBase());\n                }\n            ", 'IsNonSpeculative', 'IsQuiesce'],{})
           
-              return new Quiesce(machInst);
+              std::cout << "quiesce" << std::endl; return 0; // Quiesce(machInst);
           break;
         
         case 0x2:  
           // BasicOperate::quiesceNs(['\n                PseudoInst::quiesceNs(xc->tcBase(), R16);\n            ', 'IsNonSpeculative', 'IsQuiesce'],{})
           
-              return new QuiesceNs(machInst);
+              std::cout << "quiescens" << std::endl; return 0; // QuiesceNs(machInst);
           break;
         
         case 0x3:  
           // BasicOperate::quiesceCycles(['\n                PseudoInst::quiesceCycles(xc->tcBase(), R16);\n            ', 'IsNonSpeculative', 'IsQuiesce', 'IsUnverifiable'],{})
           
-              return new QuiesceCycles(machInst);
+              std::cout << "quiescecycles" << std::endl; return 0; // QuiesceCycles(machInst);
           break;
         
         case 0x4:  
           // BasicOperate::quiesceTime(['\n                R0 = PseudoInst::quiesceTime(xc->tcBase());\n            ', 'IsNonSpeculative', 'IsUnverifiable'],{})
           
-              return new QuiesceTime(machInst);
+              std::cout << "quiescetime" << std::endl; return 0; // QuiesceTime(machInst);
           break;
         
         case 0x7:  
           // BasicOperate::rpns(['\n                R0 = PseudoInst::rpns(xc->tcBase());\n            ', 'IsNonSpeculative', 'IsUnverifiable'],{})
           
-              return new Rpns(machInst);
+              std::cout << "rpns" << std::endl; return 0; // Rpns(machInst);
           break;
         
         case 0x9:  
           // BasicOperate::wakeCPU(['\n                PseudoInst::wakeCPU(xc->tcBase(), R16);\n            ', 'IsNonSpeculative', 'IsUnverifiable'],{})
           
-              return new WakeCPU(machInst);
+              std::cout << "wakecpu" << std::endl; return 0; // WakeCPU(machInst);
           break;
         
         case 0x10:  
           // BasicOperate::deprecated_ivlb(['\n                warn_once("Obsolete M5 ivlb instruction encountered.\\n");\n            '],{})
           
-              return new Deprecated_ivlb(machInst);
+              std::cout << "deprecated_ivlb" << std::endl; return 0; // Deprecated_ivlb(machInst);
           break;
         
         case 0x11:  
           // BasicOperate::deprecated_ivle(['\n                warn_once("Obsolete M5 ivlb instruction encountered.\\n");\n            '],{})
           
-              return new Deprecated_ivle(machInst);
+              std::cout << "deprecated_ivle" << std::endl; return 0; // Deprecated_ivle(machInst);
           break;
         
         case 0x20:  
           // BasicOperate::deprecated_exit(['\n                warn_once("deprecated M5 exit instruction encountered.\\n");\n                PseudoInst::m5exit(xc->tcBase(), 0);\n            ', 'No_OpClass', 'IsNonSpeculative'],{})
           
-              return new Deprecated_exit(machInst);
+              std::cout << "deprecated_exit" << std::endl; return 0; // Deprecated_exit(machInst);
           break;
         
         case 0x21:  
           // BasicOperate::m5exit(['\n                PseudoInst::m5exit(xc->tcBase(), R16);\n            ', 'No_OpClass', 'IsNonSpeculative'],{})
           
-              return new M5exit(machInst);
+              std::cout << "m5exit" << std::endl; return 0; // M5exit(machInst);
           break;
         
         case 0x31:  
           // BasicOperate::loadsymbol(['\n                PseudoInst::loadsymbol(xc->tcBase());\n            ', 'No_OpClass', 'IsNonSpeculative'],{})
           
-              return new Loadsymbol(machInst);
+              std::cout << "loadsymbol" << std::endl; return 0; // Loadsymbol(machInst);
           break;
         
         case 0x30:  
           // BasicOperate::initparam(['\n                Ra = PseudoInst::initParam(xc->tcBase());\n            '],{})
           
-              return new Initparam(machInst);
+              std::cout << "initparam" << std::endl; return 0; // Initparam(machInst);
           break;
         
         case 0x40:  
           // BasicOperate::resetstats(['\n                PseudoInst::resetstats(xc->tcBase(), R16, R17);\n            ', 'IsNonSpeculative'],{})
           
-              return new Resetstats(machInst);
+              std::cout << "resetstats" << std::endl; return 0; // Resetstats(machInst);
           break;
         
         case 0x41:  
           // BasicOperate::dumpstats(['\n                PseudoInst::dumpstats(xc->tcBase(), R16, R17);\n            ', 'IsNonSpeculative'],{})
           
-              return new Dumpstats(machInst);
+              std::cout << "dumpstats" << std::endl; return 0; // Dumpstats(machInst);
           break;
         
         case 0x42:  
           // BasicOperate::dumpresetstats(['\n                PseudoInst::dumpresetstats(xc->tcBase(), R16, R17);\n            ', 'IsNonSpeculative'],{})
           
-              return new Dumpresetstats(machInst);
+              std::cout << "dumpresetstats" << std::endl; return 0; // Dumpresetstats(machInst);
           break;
         
         case 0x43:  
           // BasicOperate::m5checkpoint(['\n                PseudoInst::m5checkpoint(xc->tcBase(), R16, R17);\n            ', 'IsNonSpeculative'],{})
           
-              return new M5checkpoint(machInst);
+              std::cout << "m5checkpoint" << std::endl; return 0; // M5checkpoint(machInst);
           break;
         
         case 0x50:  
           // BasicOperate::m5readfile(['\n                R0 = PseudoInst::readfile(xc->tcBase(), R16, R17, R18);\n            ', 'IsNonSpeculative'],{})
           
-              return new M5readfile(machInst);
+              std::cout << "m5readfile" << std::endl; return 0; // M5readfile(machInst);
           break;
         
         case 0x51:  
           // BasicOperate::m5break(['\n                PseudoInst::debugbreak(xc->tcBase());\n            ', 'IsNonSpeculative'],{})
           
-              return new M5break(machInst);
+              std::cout << "m5break" << std::endl; return 0; // M5break(machInst);
           break;
         
         case 0x52:  
           // BasicOperate::m5switchcpu(['\n                PseudoInst::switchcpu(xc->tcBase());\n            ', 'IsNonSpeculative'],{})
           
-              return new M5switchcpu(machInst);
+              std::cout << "m5switchcpu" << std::endl; return 0; // M5switchcpu(machInst);
           break;
         
         case 0x53:  
           // BasicOperate::m5addsymbol(['\n                PseudoInst::addsymbol(xc->tcBase(), R16, R17);\n            ', 'IsNonSpeculative'],{})
           
-              return new M5addsymbol(machInst);
+              std::cout << "m5addsymbol" << std::endl; return 0; // M5addsymbol(machInst);
           break;
         
         case 0x54:  
           // BasicOperate::m5panic(['\n                panic("M5 panic instruction called at pc = %#x.", PC);\n            ', 'IsNonSpeculative'],{})
           
-              return new M5panic(machInst);
+              std::cout << "m5panic" << std::endl; return 0; // M5panic(machInst);
           break;
 #define  CPANN(lbl) CPA::cpa()->lbl(xc->tcBase())
         
@@ -2779,109 +2800,109 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
             case 0x0:  
               // BasicOperate::m5a_old(['\n                    panic("Deprecated M5 annotate instruction executed "\n                          "at pc = %#x\\n", PC);\n                ', 'IsNonSpeculative'],{})
               
-                  return new M5a_old(machInst);
+                  std::cout << "m5a_old" << std::endl; return 0; // M5a_old(machInst);
               break;
             
             case 0x1:  
               // BasicOperate::m5a_bsm(['\n                    CPANN(swSmBegin);\n                ', 'IsNonSpeculative'],{})
               
-                  return new M5a_bsm(machInst);
+                  std::cout << "m5a_bsm" << std::endl; return 0; // M5a_bsm(machInst);
               break;
             
             case 0x2:  
               // BasicOperate::m5a_esm(['\n                    CPANN(swSmEnd);\n                ', 'IsNonSpeculative'],{})
               
-                  return new M5a_esm(machInst);
+                  std::cout << "m5a_esm" << std::endl; return 0; // M5a_esm(machInst);
               break;
             
             case 0x3:  
               // BasicOperate::m5a_begin(['\n                    CPANN(swExplictBegin);\n                ', 'IsNonSpeculative'],{})
               
-                  return new M5a_begin(machInst);
+                  std::cout << "m5a_begin" << std::endl; return 0; // M5a_begin(machInst);
               break;
             
             case 0x4:  
               // BasicOperate::m5a_end(['\n                    CPANN(swEnd);\n                ', 'IsNonSpeculative'],{})
               
-                  return new M5a_end(machInst);
+                  std::cout << "m5a_end" << std::endl; return 0; // M5a_end(machInst);
               break;
             
             case 0x6:  
               // BasicOperate::m5a_q(['\n                    CPANN(swQ);\n                ', 'IsNonSpeculative'],{})
               
-                  return new M5a_q(machInst);
+                  std::cout << "m5a_q" << std::endl; return 0; // M5a_q(machInst);
               break;
             
             case 0x7:  
               // BasicOperate::m5a_dq(['\n                    CPANN(swDq);\n                ', 'IsNonSpeculative'],{})
               
-                  return new M5a_dq(machInst);
+                  std::cout << "m5a_dq" << std::endl; return 0; // M5a_dq(machInst);
               break;
             
             case 0x8:  
               // BasicOperate::m5a_wf(['\n                    CPANN(swWf);\n                ', 'IsNonSpeculative'],{})
               
-                  return new M5a_wf(machInst);
+                  std::cout << "m5a_wf" << std::endl; return 0; // M5a_wf(machInst);
               break;
             
             case 0x9:  
               // BasicOperate::m5a_we(['\n                    CPANN(swWe);\n                ', 'IsNonSpeculative'],{})
               
-                  return new M5a_we(machInst);
+                  std::cout << "m5a_we" << std::endl; return 0; // M5a_we(machInst);
               break;
             
             case 0xc:  
               // BasicOperate::m5a_sq(['\n                    CPANN(swSq);\n                ', 'IsNonSpeculative'],{})
               
-                  return new M5a_sq(machInst);
+                  std::cout << "m5a_sq" << std::endl; return 0; // M5a_sq(machInst);
               break;
             
             case 0xd:  
               // BasicOperate::m5a_aq(['\n                    CPANN(swAq);\n                ', 'IsNonSpeculative'],{})
               
-                  return new M5a_aq(machInst);
+                  std::cout << "m5a_aq" << std::endl; return 0; // M5a_aq(machInst);
               break;
             
             case 0xe:  
               // BasicOperate::m5a_pq(['\n                    CPANN(swPq);\n                ', 'IsNonSpeculative'],{})
               
-                  return new M5a_pq(machInst);
+                  std::cout << "m5a_pq" << std::endl; return 0; // M5a_pq(machInst);
               break;
             
             case 0xf:  
               // BasicOperate::m5a_l(['\n                    CPANN(swLink);\n                ', 'IsNonSpeculative'],{})
               
-                  return new M5a_l(machInst);
+                  std::cout << "m5a_l" << std::endl; return 0; // M5a_l(machInst);
               break;
             
             case 0x10:  
               // BasicOperate::m5a_identify(['\n                    CPANN(swIdentify);\n                ', 'IsNonSpeculative'],{})
               
-                  return new M5a_identify(machInst);
+                  std::cout << "m5a_identify" << std::endl; return 0; // M5a_identify(machInst);
               break;
             
             case 0x11:  
               // BasicOperate::m5a_getid(['\n                    R0 = CPANN(swGetId);\n                ', 'IsNonSpeculative'],{})
               
-                  return new M5a_getid(machInst);
+                  std::cout << "m5a_getid" << std::endl; return 0; // M5a_getid(machInst);
               break;
             
             case 0x13:  
               // BasicOperate::m5a_scl(['\n                    CPANN(swSyscallLink);\n                ', 'IsNonSpeculative'],{})
               
-                  return new M5a_scl(machInst);
+                  std::cout << "m5a_scl" << std::endl; return 0; // M5a_scl(machInst);
               break;
             
             case 0x14:  
               // BasicOperate::m5a_rq(['\n                    CPANN(swRq);\n                ', 'IsNonSpeculative'],{})
               
-                  return new M5a_rq(machInst);
+                  std::cout << "m5a_rq" << std::endl; return 0; // M5a_rq(machInst);
               break;
             
             default:
               
               // Unknown::unknown(([], {}))
-              return new Unknown(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
               break;
             }
           #undef CPANN
@@ -2889,38 +2910,38 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         case 0x56:  
           // BasicOperate::m5reserved2(['\n                warn("M5 reserved opcode ignored");\n            ', 'IsNonSpeculative'],{})
           
-              return new M5reserved2(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // M5reserved2(machInst);
           break;
         
         case 0x57:  
           // BasicOperate::m5reserved3(['\n                warn("M5 reserved opcode ignored");\n            ', 'IsNonSpeculative'],{})
           
-              return new M5reserved3(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // M5reserved3(machInst);
           break;
         
         case 0x58:  
           // BasicOperate::m5reserved4(['\n                warn("M5 reserved opcode ignored");\n            ', 'IsNonSpeculative'],{})
           
-              return new M5reserved4(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // M5reserved4(machInst);
           break;
         
         case 0x59:  
           // BasicOperate::m5reserved5(['\n                warn("M5 reserved opcode ignored");\n            ', 'IsNonSpeculative'],{})
           
-              return new M5reserved5(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // M5reserved5(machInst);
           break;
         
         default:
           
           // Unknown::unknown(([], {}))
-          return new Unknown(machInst);
+          std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
           break;
         }
       
     default:
       
       // Unknown::unknown(([], {}))
-      return new Unknown(machInst);
+      std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
       break;
     }
   }
