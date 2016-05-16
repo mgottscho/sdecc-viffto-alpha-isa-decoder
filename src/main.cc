@@ -23,9 +23,9 @@ int main(int argc, char** argv) {
     std::cout << "Interpreted as: 0x" << std::hex << std::setw(8) << raw << std::dec << std::endl;
     std::cout.fill(' ');
     
-    MipsISA::ExtMachInst inst = static_cast<MipsISA::ExtMachInst>(raw);
+    AlphaISA::ExtMachInst inst = static_cast<AlphaISA::ExtMachInst>(raw);
 
-    MipsISA::Decoder decoder;
+    AlphaISA::Decoder decoder;
     std::cout << "Disassembly: ";
     bool ret = decoder.decodeInst(inst);
     std::cout << "Result: ";

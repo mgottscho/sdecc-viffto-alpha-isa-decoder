@@ -219,7 +219,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
              //      i = makeNop(i);
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "addlimm" << std::endl;
+                   (IMM) ? std::cout << "addlimm" << std::endl
                          : std::cout << "addl" << std::endl;
                }
                //return i;
@@ -238,7 +238,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    //i = makeNop(i);
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "addlvimm" << std::endl;
+                   (IMM) ? std::cout << "addlvimm" << std::endl
                          : std::cout << "addlv" << std::endl;
                }
             //   return i;
@@ -261,7 +261,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "s4addlimm" << std::endl;
+                   (IMM) ? std::cout << "s4addlimm" << std::endl
                          : std::cout << "s4addl" << std::endl;
                }
                return 0;
@@ -278,7 +278,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                //    i = makeNop(i);
                     std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "s8addlimm" << std::endl;
+                   (IMM) ? std::cout << "s8addlimm" << std::endl
                          : std::cout << "s8addl" << std::endl;
                }
                //return i;
@@ -301,7 +301,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "addqimm" << std::endl;
+                   (IMM) ? std::cout << "addqimm" << std::endl
                          : std::cout << "addq" << std::endl;
                }
                return 0;
@@ -318,7 +318,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    //i = makeNop(i);
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "addqvimm" << std::endl;
+                   (IMM) ? std::cout << "addqvimm" << std::endl
                          : std::cout << "addqv" << std::endl;
                }
                //return i;
@@ -341,7 +341,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "s4addqimm" << std::endl;
+                   (IMM) ? std::cout << "s4addqimm" << std::endl
                          : std::cout << "s4addq" << std::endl;
                }
            return 0;
@@ -362,7 +362,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "s8addqimm" << std::endl;
+                   (IMM) ? std::cout << "s8addqimm" << std::endl
                          : std::cout << "s8addq" << std::endl;
                }
                return 0;
@@ -383,7 +383,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "sublimm" << std::endl;
+                   (IMM) ? std::cout << "sublimm" << std::endl
                          : std::cout << "subl" << std::endl;
                }
                return 0;
@@ -404,7 +404,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "sublvimm" << std::endl;
+                   (IMM) ? std::cout << "sublvimm" << std::endl
                          : std::cout << "sublv" << std::endl;
                }
                return 0;
@@ -425,7 +425,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "s4sublimm" << std::endl;
+                   (IMM) ? std::cout << "s4sublimm" << std::endl
                          : std::cout << "s4subl" << std::endl;
                }
                return 0;
@@ -446,7 +446,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "s8sublimm" << std::endl;
+                   (IMM) ? std::cout << "s8sublimm" << std::endl
                          : std::cout << "s8subl" << std::endl;
                }
                return 0;
@@ -467,7 +467,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "subqimm" << std::endl;
+                   (IMM) ? std::cout << "subqimm" << std::endl
                          : std::cout << "subq" << std::endl;
                }
                return 0;
@@ -488,7 +488,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "subqvimm" << std::endl;
+                   (IMM) ? std::cout << "subqvimm" << std::endl
                          : std::cout << "subqv" << std::endl;
                }
                return 0;
@@ -509,7 +509,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "s4subqimm" << std::endl;
+                   (IMM) ? std::cout << "s4subqimm" << std::endl
                          : std::cout << "s4subq" << std::endl;
                }
                return 0;
@@ -530,7 +530,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "s8subqimm" << std::endl;
+                   (IMM) ? std::cout << "s8subqimm" << std::endl
                          : std::cout << "s8subq" << std::endl;
                }
                return 0;
@@ -551,7 +551,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "cmpeqimm" << std::endl;
+                   (IMM) ? std::cout << "cmpeqimm" << std::endl
                          : std::cout << "cmpeq" << std::endl;
                }
                return 0;
@@ -572,7 +572,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "cmpleimm" << std::endl;
+                   (IMM) ? std::cout << "cmpleimm" << std::endl
                          : std::cout << "cmple" << std::endl;
                }
                return 0;
@@ -593,7 +593,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "cmpltimm" << std::endl;
+                   (IMM) ? std::cout << "cmpltimm" << std::endl
                          : std::cout << "cmplt" << std::endl;
                }
                return 0;
@@ -614,7 +614,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "cmpuleimm" << std::endl;
+                   (IMM) ? std::cout << "cmpuleimm" << std::endl
                          : std::cout << "cmpule" << std::endl;
                }
                return 0;
@@ -635,7 +635,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "cmpultimm" << std::endl;
+                   (IMM) ? std::cout << "cmpultimm" << std::endl
                          : std::cout << "cmpult" << std::endl;
                }
                return 0;
@@ -656,7 +656,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "cmpbgeimm" << std::endl;
+                   (IMM) ? std::cout << "cmpbgeimm" << std::endl
                          : std::cout << "cmpbge" << std::endl;
                }
                return 0;
@@ -687,7 +687,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "andimm" << std::endl;
+                   (IMM) ? std::cout << "andimm" << std::endl
                          : std::cout << "and" << std::endl;
                }
                return 0;
@@ -708,7 +708,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "bicimm" << std::endl;
+                   (IMM) ? std::cout << "bicimm" << std::endl
                          : std::cout << "bic" << std::endl;
                }
                return 0;
@@ -729,7 +729,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "bisimm" << std::endl;
+                   (IMM) ? std::cout << "bisimm" << std::endl
                          : std::cout << "bis" << std::endl;
                }
                return 0;
@@ -750,7 +750,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "ornotimm" << std::endl;
+                   (IMM) ? std::cout << "ornotimm" << std::endl
                          : std::cout << "ornot" << std::endl;
                }
                return 0;
@@ -771,7 +771,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "xorimm" << std::endl;
+                   (IMM) ? std::cout << "xorimm" << std::endl
                          : std::cout << "xor" << std::endl;
                }
                return 0;
@@ -792,7 +792,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "eqvimm" << std::endl;
+                   (IMM) ? std::cout << "eqvimm" << std::endl
                          : std::cout << "eqv" << std::endl;
                }
                return 0;
@@ -813,7 +813,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "cmovlbsimm" << std::endl;
+                   (IMM) ? std::cout << "cmovlbsimm" << std::endl
                          : std::cout << "cmovlbs" << std::endl;
                }
                return 0;
@@ -834,7 +834,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "cmovlbcimm" << std::endl;
+                   (IMM) ? std::cout << "cmovlbcimm" << std::endl
                          : std::cout << "cmovlbc" << std::endl;
                }
                return 0;
@@ -855,7 +855,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "cmoveqimm" << std::endl;
+                   (IMM) ? std::cout << "cmoveqimm" << std::endl
                          : std::cout << "cmoveq" << std::endl;
                }
                return 0;
@@ -876,7 +876,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "cmovneimm" << std::endl;
+                   (IMM) ? std::cout << "cmovneimm" << std::endl
                          : std::cout << "cmovne" << std::endl;
                }
                return 0;
@@ -897,7 +897,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "cmovltimm" << std::endl;
+                   (IMM) ? std::cout << "cmovltimm" << std::endl
                          : std::cout << "cmovlt" << std::endl;
                }
                return 0;
@@ -918,7 +918,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "cmovgeimm" << std::endl;
+                   (IMM) ? std::cout << "cmovgeimm" << std::endl
                          : std::cout << "cmovge" << std::endl;
                }
                return 0;
@@ -939,7 +939,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "cmovleimm" << std::endl;
+                   (IMM) ? std::cout << "cmovleimm" << std::endl
                          : std::cout << "cmovle" << std::endl;
                }
                return 0;
@@ -960,7 +960,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                if (RC == 31) {
                    std::cout << "nop" << std::endl;
                } else {
-                   (IMM) ? std::cout << "cmovgtimm" << std::endl;
+                   (IMM) ? std::cout << "cmovgtimm" << std::endl
                          : std::cout << "cmovgt" << std::endl;
                }
                return 0;
@@ -984,7 +984,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "amaskimm" << std::endl;
+                       (IMM) ? std::cout << "amaskimm" << std::endl
                              : std::cout << "amask" << std::endl;
                    }
                    return 0;
@@ -1076,7 +1076,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "sllimm" << std::endl;
+                       (IMM) ? std::cout << "sllimm" << std::endl
                              : std::cout << "sll" << std::endl;
                    }
                    return 0;
@@ -1097,7 +1097,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "srlimm" << std::endl;
+                       (IMM) ? std::cout << "srlimm" << std::endl
                              : std::cout << "srl" << std::endl;
                    }
                    return 0;
@@ -1118,7 +1118,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "sraimm" << std::endl;
+                       (IMM) ? std::cout << "sraimm" << std::endl
                              : std::cout << "sra" << std::endl;
                    }
                    return 0;
@@ -1139,7 +1139,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "mskblimm" << std::endl;
+                       (IMM) ? std::cout << "mskblimm" << std::endl
                              : std::cout << "mskbl" << std::endl;
                    }
                    return 0;
@@ -1160,7 +1160,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "mskwlimm" << std::endl;
+                       (IMM) ? std::cout << "mskwlimm" << std::endl
                              : std::cout << "mskwl" << std::endl;
                    }
                    return 0;
@@ -1181,7 +1181,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "mskllimm" << std::endl;
+                       (IMM) ? std::cout << "mskllimm" << std::endl
                              : std::cout << "mskll" << std::endl;
                    }
                    return 0;
@@ -1202,7 +1202,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "mskqlimm" << std::endl;
+                       (IMM) ? std::cout << "mskqlimm" << std::endl
                              : std::cout << "mskql" << std::endl;
                    }
                    return 0;
@@ -1223,7 +1223,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "mskwhimm" << std::endl;
+                       (IMM) ? std::cout << "mskwhimm" << std::endl
                              : std::cout << "mskwh" << std::endl;
                    }
                    return 0;
@@ -1244,7 +1244,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "msklhimm" << std::endl;
+                       (IMM) ? std::cout << "msklhimm" << std::endl
                              : std::cout << "msklh" << std::endl;
                    }
                    return 0;
@@ -1265,7 +1265,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "mskqhimm" << std::endl;
+                       (IMM) ? std::cout << "mskqhimm" << std::endl
                              : std::cout << "mskqh" << std::endl;
                    }
                    return 0;
@@ -1286,7 +1286,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "extblimm" << std::endl;
+                       (IMM) ? std::cout << "extblimm" << std::endl
                              : std::cout << "extbl" << std::endl;
                    }
                    return 0;
@@ -1307,7 +1307,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "extwlimm" << std::endl;
+                       (IMM) ? std::cout << "extwlimm" << std::endl
                              : std::cout << "extwl" << std::endl;
                    }
                    return 0;
@@ -1328,7 +1328,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "extllimm" << std::endl;
+                       (IMM) ? std::cout << "extllimm" << std::endl
                              : std::cout << "extll" << std::endl;
                    }
                    return 0;
@@ -1349,7 +1349,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "extqlimm" << std::endl;
+                       (IMM) ? std::cout << "extqlimm" << std::endl
                              : std::cout << "extql" << std::endl;
                    }
                    return 0;
@@ -1370,7 +1370,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "extwhimm" << std::endl;
+                       (IMM) ? std::cout << "extwhimm" << std::endl
                              : std::cout << "extwh" << std::endl;
                    }
                    return 0;
@@ -1391,7 +1391,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "extlhimm" << std::endl;
+                       (IMM) ? std::cout << "extlhimm" << std::endl
                              : std::cout << "extlh" << std::endl;
                    }
                    return 0;
@@ -1412,7 +1412,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "extqhimm" << std::endl;
+                       (IMM) ? std::cout << "extqhimm" << std::endl
                              : std::cout << "extqh" << std::endl;
                    }
                    return 0;
@@ -1433,7 +1433,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "insblimm" << std::endl;
+                       (IMM) ? std::cout << "insblimm" << std::endl
                              : std::cout << "insbl" << std::endl;
                    }
                    return 0;
@@ -1454,7 +1454,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "inswlimm" << std::endl;
+                       (IMM) ? std::cout << "inswlimm" << std::endl
                              : std::cout << "inswl" << std::endl;
                    }
                    return 0;
@@ -1475,7 +1475,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "insllimm" << std::endl;
+                       (IMM) ? std::cout << "insllimm" << std::endl
                              : std::cout << "insll" << std::endl;
                    }
                    return 0;
@@ -1496,7 +1496,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "insqlimm" << std::endl;
+                       (IMM) ? std::cout << "insqlimm" << std::endl
                              : std::cout << "insql" << std::endl;
                    }
                    return 0;
@@ -1517,7 +1517,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "inswhimm" << std::endl;
+                       (IMM) ? std::cout << "inswhimm" << std::endl
                              : std::cout << "inswh" << std::endl;
                    }
                    return 0;
@@ -1538,7 +1538,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "inslhimm" << std::endl;
+                       (IMM) ? std::cout << "inslhimm" << std::endl
                              : std::cout << "inslh" << std::endl;
                    }
                    return 0;
@@ -1559,7 +1559,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "insqhimm" << std::endl;
+                       (IMM) ? std::cout << "insqhimm" << std::endl
                              : std::cout << "insqh" << std::endl;
                    }
                    return 0;
@@ -1580,7 +1580,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "zapimm" << std::endl;
+                       (IMM) ? std::cout << "zapimm" << std::endl
                              : std::cout << "zap" << std::endl;
                    }
                    return 0;
@@ -1601,7 +1601,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    if (RC == 31) {
                        std::cout << "nop" << std::endl;
                    } else {
-                       (IMM) ? std::cout << "zapnotimm" << std::endl;
+                       (IMM) ? std::cout << "zapnotimm" << std::endl
                              : std::cout << "zapnot" << std::endl;
                    }
                    return 0;
