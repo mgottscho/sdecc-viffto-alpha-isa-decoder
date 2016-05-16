@@ -249,7 +249,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         case 0x2:  
           // IntegerOperate::s4addl([' Rc_sl = (Ra_sl << 2) + Rb_or_imm_sl; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new S4addlImm(machInst)
                          : (AlphaStaticInst *)new S4addl(machInst);
@@ -257,7 +257,14 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "s4addlimm" << std::endl;
+                         : std::cout << "s4addl" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x12:  
@@ -282,7 +289,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         case 0x20:  
           // IntegerOperate::addq([' Rc = Ra + Rb_or_imm; '],{})
           
-           {
+          /* {
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new AddqImm(machInst)
                          : (AlphaStaticInst *)new Addq(machInst);
@@ -290,7 +297,14 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "addqimm" << std::endl;
+                         : std::cout << "addq" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x60:  
@@ -351,6 +365,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    (IMM) ? std::cout << "s8addqimm" << std::endl;
                          : std::cout << "s8addq" << std::endl;
                }
+               return 0;
           break;
         
         case 0x9:  
@@ -371,6 +386,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    (IMM) ? std::cout << "sublimm" << std::endl;
                          : std::cout << "subl" << std::endl;
                }
+               return 0;
           break;
         
         case 0x49:  
@@ -391,6 +407,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    (IMM) ? std::cout << "sublvimm" << std::endl;
                          : std::cout << "sublv" << std::endl;
                }
+               return 0;
           break;
         
         case 0xb:  
@@ -411,6 +428,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    (IMM) ? std::cout << "s4sublimm" << std::endl;
                          : std::cout << "s4subl" << std::endl;
                }
+               return 0;
           break;
         
         case 0x1b:  
@@ -431,12 +449,13 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    (IMM) ? std::cout << "s8sublimm" << std::endl;
                          : std::cout << "s8subl" << std::endl;
                }
+               return 0;
           break;
         
         case 0x29:  
           // IntegerOperate::subq([' Rc = Ra - Rb_or_imm; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new SubqImm(machInst)
                          : (AlphaStaticInst *)new Subq(machInst);
@@ -444,13 +463,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "subqimm" << std::endl;
+                         : std::cout << "subq" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x69:  
           // IntegerOperate::subqv(['\n                uint64_t tmp  = Ra - Rb_or_imm;\n                // signed overflow detection is same as for add,\n                // except we need to look at the *complemented*\n                // sign bit of the subtrahend (Rb), i.e., if the initial\n                // signs are the *same* then no overflow can occur\n                if (Ra<63:> != Rb_or_imm<63:> && tmp<63:> != Ra<63:>)\n                    fault = new IntegerOverflowFault;\n                Rc = tmp;\n            '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new SubqvImm(machInst)
                          : (AlphaStaticInst *)new Subqv(machInst);
@@ -458,13 +484,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "subqvimm" << std::endl;
+                         : std::cout << "subqv" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x2b:  
           // IntegerOperate::s4subq([' Rc = (Ra << 2) - Rb_or_imm; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new S4subqImm(machInst)
                          : (AlphaStaticInst *)new S4subq(machInst);
@@ -472,13 +505,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "s4subqimm" << std::endl;
+                         : std::cout << "s4subq" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x3b:  
           // IntegerOperate::s8subq([' Rc = (Ra << 3) - Rb_or_imm; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new S8subqImm(machInst)
                          : (AlphaStaticInst *)new S8subq(machInst);
@@ -486,13 +526,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "s8subqimm" << std::endl;
+                         : std::cout << "s8subq" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x2d:  
           // IntegerOperate::cmpeq([' Rc = (Ra == Rb_or_imm); '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new CmpeqImm(machInst)
                          : (AlphaStaticInst *)new Cmpeq(machInst);
@@ -500,13 +547,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "cmpeqimm" << std::endl;
+                         : std::cout << "cmpeq" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x6d:  
           // IntegerOperate::cmple([' Rc = (Ra_sq <= Rb_or_imm_sq); '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new CmpleImm(machInst)
                          : (AlphaStaticInst *)new Cmple(machInst);
@@ -514,13 +568,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "cmpleimm" << std::endl;
+                         : std::cout << "cmple" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x4d:  
           // IntegerOperate::cmplt([' Rc = (Ra_sq <  Rb_or_imm_sq); '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new CmpltImm(machInst)
                          : (AlphaStaticInst *)new Cmplt(machInst);
@@ -528,13 +589,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "cmpltimm" << std::endl;
+                         : std::cout << "cmplt" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x3d:  
           // IntegerOperate::cmpule([' Rc = (Ra_uq <= Rb_or_imm_uq); '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new CmpuleImm(machInst)
                          : (AlphaStaticInst *)new Cmpule(machInst);
@@ -542,13 +610,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "cmpuleimm" << std::endl;
+                         : std::cout << "cmpule" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x1d:  
           // IntegerOperate::cmpult([' Rc = (Ra_uq <  Rb_or_imm_uq); '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new CmpultImm(machInst)
                          : (AlphaStaticInst *)new Cmpult(machInst);
@@ -556,13 +631,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "cmpultimm" << std::endl;
+                         : std::cout << "cmpult" << std::endl;
+               }
+               return 0;
           break;
         
         case 0xf:  
           // IntegerOperate::cmpbge(['\n                int hi = 7;\n                int lo = 0;\n                uint64_t tmp = 0;\n                for (int i = 0; i < 8; ++i) {\n                    tmp |= (Ra_uq<hi:lo> >= Rb_or_imm_uq<hi:lo>) << i;\n                    hi += 8;\n                    lo += 8;\n                }\n                Rc = tmp;\n            '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new CmpbgeImm(machInst)
                          : (AlphaStaticInst *)new Cmpbge(machInst);
@@ -570,7 +652,14 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "cmpbgeimm" << std::endl;
+                         : std::cout << "cmpbge" << std::endl;
+               }
+               return 0;
           break;
         
         default:
@@ -586,7 +675,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         case 0x0:  
           // IntegerOperate::and([' Rc = Ra & Rb_or_imm; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new AndImm(machInst)
                          : (AlphaStaticInst *)new And(machInst);
@@ -594,13 +683,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "andimm" << std::endl;
+                         : std::cout << "and" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x8:  
           // IntegerOperate::bic([' Rc = Ra & ~Rb_or_imm; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new BicImm(machInst)
                          : (AlphaStaticInst *)new Bic(machInst);
@@ -608,13 +704,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "bicimm" << std::endl;
+                         : std::cout << "bic" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x20:  
           // IntegerOperate::bis([' Rc = Ra | Rb_or_imm; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new BisImm(machInst)
                          : (AlphaStaticInst *)new Bis(machInst);
@@ -622,13 +725,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "bisimm" << std::endl;
+                         : std::cout << "bis" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x28:  
           // IntegerOperate::ornot([' Rc = Ra | ~Rb_or_imm; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new OrnotImm(machInst)
                          : (AlphaStaticInst *)new Ornot(machInst);
@@ -636,13 +746,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "ornotimm" << std::endl;
+                         : std::cout << "ornot" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x40:  
           // IntegerOperate::xor([' Rc = Ra ^ Rb_or_imm; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new XorImm(machInst)
                          : (AlphaStaticInst *)new Xor(machInst);
@@ -650,13 +767,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "xorimm" << std::endl;
+                         : std::cout << "xor" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x48:  
           // IntegerOperate::eqv([' Rc = Ra ^ ~Rb_or_imm; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new EqvImm(machInst)
                          : (AlphaStaticInst *)new Eqv(machInst);
@@ -664,13 +788,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "eqvimm" << std::endl;
+                         : std::cout << "eqv" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x14:  
           // IntegerOperate::cmovlbs([' Rc = ((Ra & 1) == 1) ? Rb_or_imm : Rc; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new CmovlbsImm(machInst)
                          : (AlphaStaticInst *)new Cmovlbs(machInst);
@@ -678,13 +809,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "cmovlbsimm" << std::endl;
+                         : std::cout << "cmovlbs" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x16:  
           // IntegerOperate::cmovlbc([' Rc = ((Ra & 1) == 0) ? Rb_or_imm : Rc; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new CmovlbcImm(machInst)
                          : (AlphaStaticInst *)new Cmovlbc(machInst);
@@ -692,13 +830,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "cmovlbcimm" << std::endl;
+                         : std::cout << "cmovlbc" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x24:  
           // IntegerOperate::cmoveq([' Rc = (Ra == 0) ? Rb_or_imm : Rc; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new CmoveqImm(machInst)
                          : (AlphaStaticInst *)new Cmoveq(machInst);
@@ -706,13 +851,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "cmoveqimm" << std::endl;
+                         : std::cout << "cmoveq" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x26:  
           // IntegerOperate::cmovne([' Rc = (Ra != 0) ? Rb_or_imm : Rc; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new CmovneImm(machInst)
                          : (AlphaStaticInst *)new Cmovne(machInst);
@@ -720,13 +872,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "cmovneimm" << std::endl;
+                         : std::cout << "cmovne" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x44:  
           // IntegerOperate::cmovlt([' Rc = (Ra_sq <  0) ? Rb_or_imm : Rc; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new CmovltImm(machInst)
                          : (AlphaStaticInst *)new Cmovlt(machInst);
@@ -734,13 +893,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "cmovltimm" << std::endl;
+                         : std::cout << "cmovlt" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x46:  
           // IntegerOperate::cmovge([' Rc = (Ra_sq >= 0) ? Rb_or_imm : Rc; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new CmovgeImm(machInst)
                          : (AlphaStaticInst *)new Cmovge(machInst);
@@ -748,13 +914,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "cmovgeimm" << std::endl;
+                         : std::cout << "cmovge" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x64:  
           // IntegerOperate::cmovle([' Rc = (Ra_sq <= 0) ? Rb_or_imm : Rc; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new CmovleImm(machInst)
                          : (AlphaStaticInst *)new Cmovle(machInst);
@@ -762,13 +935,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "cmovleimm" << std::endl;
+                         : std::cout << "cmovle" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x66:  
           // IntegerOperate::cmovgt([' Rc = (Ra_sq >  0) ? Rb_or_imm : Rc; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new CmovgtImm(machInst)
                          : (AlphaStaticInst *)new Cmovgt(machInst);
@@ -776,7 +956,14 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "cmovgtimm" << std::endl;
+                         : std::cout << "cmovgt" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x61:
@@ -785,7 +972,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
             case 0x1f:  
               // IntegerOperate::amask([' Rc = Rb_or_imm & ~ULL(0x17); '],{})
               
-               {
+               /*{
                    AlphaStaticInst *i =
                        (IMM) ? (AlphaStaticInst *)new AmaskImm(machInst)
                              : (AlphaStaticInst *)new Amask(machInst);
@@ -793,7 +980,14 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                        i = makeNop(i);
                    }
                    return i;
-               }
+               }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "amaskimm" << std::endl;
+                             : std::cout << "amask" << std::endl;
+                   }
+                   return 0;
               break;
             
             default:
@@ -815,13 +1009,19 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                     case 0x1:  
                       // IntegerOperate::implver([' Rc = FullSystem ? 1 : 2 '],{})
                       
-                       {
+                       /*{
                            AlphaStaticInst *i = new Implver(machInst);
                            if (RC == 31) {
                                i = makeNop(i);
                            }
                            return i;
-                       }
+                       }*/
+                           if (RC == 31) {
+                               std::cout << "nop" << std::endl;
+                           } else {
+                               std::cout << "implver" << std::endl;
+                           }
+                           return 0;
                       break;
                     
                     default:
@@ -864,7 +1064,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         case 0x39:  
           // IntegerOperate::sll([' Rc = Ra << Rb_or_imm<5:0>; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new SllImm(machInst)
                          : (AlphaStaticInst *)new Sll(machInst);
@@ -872,13 +1072,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "sllimm" << std::endl;
+                             : std::cout << "sll" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x34:  
           // IntegerOperate::srl([' Rc = Ra_uq >> Rb_or_imm<5:0>; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new SrlImm(machInst)
                          : (AlphaStaticInst *)new Srl(machInst);
@@ -886,13 +1093,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "srlimm" << std::endl;
+                             : std::cout << "srl" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x3c:  
           // IntegerOperate::sra([' Rc = Ra_sq >> Rb_or_imm<5:0>; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new SraImm(machInst)
                          : (AlphaStaticInst *)new Sra(machInst);
@@ -900,13 +1114,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "sraimm" << std::endl;
+                             : std::cout << "sra" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x2:  
           // IntegerOperate::mskbl([' Rc = Ra & ~(mask( 8) << (Rb_or_imm<2:0> * 8)); '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new MskblImm(machInst)
                          : (AlphaStaticInst *)new Mskbl(machInst);
@@ -914,13 +1135,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "mskblimm" << std::endl;
+                             : std::cout << "mskbl" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x12:  
           // IntegerOperate::mskwl([' Rc = Ra & ~(mask(16) << (Rb_or_imm<2:0> * 8)); '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new MskwlImm(machInst)
                          : (AlphaStaticInst *)new Mskwl(machInst);
@@ -928,13 +1156,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "mskwlimm" << std::endl;
+                             : std::cout << "mskwl" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x22:  
           // IntegerOperate::mskll([' Rc = Ra & ~(mask(32) << (Rb_or_imm<2:0> * 8)); '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new MskllImm(machInst)
                          : (AlphaStaticInst *)new Mskll(machInst);
@@ -942,13 +1177,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "mskllimm" << std::endl;
+                             : std::cout << "mskll" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x32:  
           // IntegerOperate::mskql([' Rc = Ra & ~(mask(64) << (Rb_or_imm<2:0> * 8)); '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new MskqlImm(machInst)
                          : (AlphaStaticInst *)new Mskql(machInst);
@@ -956,13 +1198,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "mskqlimm" << std::endl;
+                             : std::cout << "mskql" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x52:  
           // IntegerOperate::mskwh(['\n                int bv = Rb_or_imm<2:0>;\n                Rc =  bv ? (Ra & ~(mask(16) >> (64 - 8 * bv))) : Ra;\n            '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new MskwhImm(machInst)
                          : (AlphaStaticInst *)new Mskwh(machInst);
@@ -970,13 +1219,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "mskwhimm" << std::endl;
+                             : std::cout << "mskwh" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x62:  
           // IntegerOperate::msklh(['\n                int bv = Rb_or_imm<2:0>;\n                Rc =  bv ? (Ra & ~(mask(32) >> (64 - 8 * bv))) : Ra;\n            '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new MsklhImm(machInst)
                          : (AlphaStaticInst *)new Msklh(machInst);
@@ -984,13 +1240,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "msklhimm" << std::endl;
+                             : std::cout << "msklh" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x72:  
           // IntegerOperate::mskqh(['\n                int bv = Rb_or_imm<2:0>;\n                Rc =  bv ? (Ra & ~(mask(64) >> (64 - 8 * bv))) : Ra;\n            '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new MskqhImm(machInst)
                          : (AlphaStaticInst *)new Mskqh(machInst);
@@ -998,13 +1261,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "mskqhimm" << std::endl;
+                             : std::cout << "mskqh" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x6:  
           // IntegerOperate::extbl([' Rc = (Ra_uq >> (Rb_or_imm<2:0> * 8))< 7:0>; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new ExtblImm(machInst)
                          : (AlphaStaticInst *)new Extbl(machInst);
@@ -1012,13 +1282,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "extblimm" << std::endl;
+                             : std::cout << "extbl" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x16:  
           // IntegerOperate::extwl([' Rc = (Ra_uq >> (Rb_or_imm<2:0> * 8))<15:0>; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new ExtwlImm(machInst)
                          : (AlphaStaticInst *)new Extwl(machInst);
@@ -1026,13 +1303,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "extwlimm" << std::endl;
+                             : std::cout << "extwl" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x26:  
           // IntegerOperate::extll([' Rc = (Ra_uq >> (Rb_or_imm<2:0> * 8))<31:0>; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new ExtllImm(machInst)
                          : (AlphaStaticInst *)new Extll(machInst);
@@ -1040,13 +1324,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "extllimm" << std::endl;
+                             : std::cout << "extll" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x36:  
           // IntegerOperate::extql([' Rc = (Ra_uq >> (Rb_or_imm<2:0> * 8)); '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new ExtqlImm(machInst)
                          : (AlphaStaticInst *)new Extql(machInst);
@@ -1054,13 +1345,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "extqlimm" << std::endl;
+                             : std::cout << "extql" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x5a:  
           // IntegerOperate::extwh(['\n                Rc = (Ra << (64 - (Rb_or_imm<2:0> * 8))<5:0>)<15:0>; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new ExtwhImm(machInst)
                          : (AlphaStaticInst *)new Extwh(machInst);
@@ -1068,13 +1366,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "extwhimm" << std::endl;
+                             : std::cout << "extwh" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x6a:  
           // IntegerOperate::extlh(['\n                Rc = (Ra << (64 - (Rb_or_imm<2:0> * 8))<5:0>)<31:0>; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new ExtlhImm(machInst)
                          : (AlphaStaticInst *)new Extlh(machInst);
@@ -1082,13 +1387,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "extlhimm" << std::endl;
+                             : std::cout << "extlh" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x7a:  
           // IntegerOperate::extqh(['\n                Rc = (Ra << (64 - (Rb_or_imm<2:0> * 8))<5:0>); '],{})
           
-           {
+/*           {
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new ExtqhImm(machInst)
                          : (AlphaStaticInst *)new Extqh(machInst);
@@ -1096,13 +1408,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "extqhimm" << std::endl;
+                             : std::cout << "extqh" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0xb:  
           // IntegerOperate::insbl([' Rc = Ra< 7:0> << (Rb_or_imm<2:0> * 8); '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new InsblImm(machInst)
                          : (AlphaStaticInst *)new Insbl(machInst);
@@ -1110,13 +1429,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "insblimm" << std::endl;
+                             : std::cout << "insbl" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x1b:  
           // IntegerOperate::inswl([' Rc = Ra<15:0> << (Rb_or_imm<2:0> * 8); '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new InswlImm(machInst)
                          : (AlphaStaticInst *)new Inswl(machInst);
@@ -1124,13 +1450,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "inswlimm" << std::endl;
+                             : std::cout << "inswl" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x2b:  
           // IntegerOperate::insll([' Rc = Ra<31:0> << (Rb_or_imm<2:0> * 8); '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new InsllImm(machInst)
                          : (AlphaStaticInst *)new Insll(machInst);
@@ -1138,13 +1471,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "insllimm" << std::endl;
+                             : std::cout << "insll" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x3b:  
           // IntegerOperate::insql([' Rc = Ra       << (Rb_or_imm<2:0> * 8); '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new InsqlImm(machInst)
                          : (AlphaStaticInst *)new Insql(machInst);
@@ -1152,13 +1492,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "insqlimm" << std::endl;
+                             : std::cout << "insql" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x57:  
           // IntegerOperate::inswh(['\n                int bv = Rb_or_imm<2:0>;\n                Rc = bv ? (Ra_uq<15:0> >> (64 - 8 * bv)) : 0;\n            '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new InswhImm(machInst)
                          : (AlphaStaticInst *)new Inswh(machInst);
@@ -1166,13 +1513,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "inswhimm" << std::endl;
+                             : std::cout << "inswh" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x67:  
           // IntegerOperate::inslh(['\n                int bv = Rb_or_imm<2:0>;\n                Rc = bv ? (Ra_uq<31:0> >> (64 - 8 * bv)) : 0;\n            '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new InslhImm(machInst)
                          : (AlphaStaticInst *)new Inslh(machInst);
@@ -1180,13 +1534,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "inslhimm" << std::endl;
+                             : std::cout << "inslh" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x77:  
           // IntegerOperate::insqh(['\n                int bv = Rb_or_imm<2:0>;\n                Rc = bv ? (Ra_uq       >> (64 - 8 * bv)) : 0;\n            '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new InsqhImm(machInst)
                          : (AlphaStaticInst *)new Insqh(machInst);
@@ -1194,13 +1555,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "insqhimm" << std::endl;
+                             : std::cout << "insqh" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x30:  
           // IntegerOperate::zap(['\n                uint64_t zapmask = 0;\n                for (int i = 0; i < 8; ++i) {\n                    if (Rb_or_imm<i:>)\n                        zapmask |= (mask(8) << (i * 8));\n                }\n                Rc = Ra & ~zapmask;\n            '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new ZapImm(machInst)
                          : (AlphaStaticInst *)new Zap(machInst);
@@ -1208,13 +1576,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "zapimm" << std::endl;
+                             : std::cout << "zap" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x31:  
           // IntegerOperate::zapnot(['\n                uint64_t zapmask = 0;\n                for (int i = 0; i < 8; ++i) {\n                    if (!Rb_or_imm<i:>)\n                        zapmask |= (mask(8) << (i * 8));\n                }\n                Rc = Ra & ~zapmask;\n            '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new ZapnotImm(machInst)
                          : (AlphaStaticInst *)new Zapnot(machInst);
@@ -1222,7 +1597,14 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "zapnotimm" << std::endl;
+                             : std::cout << "zapnot" << std::endl;
+                   }
+                   return 0;
           break;
         
         default:
