@@ -215,11 +215,12 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                //AlphaStaticInst *i =
                    //(IMM) ? (AlphaStaticInst *)new AddlImm(machInst)
                          //: (AlphaStaticInst *)new Addl(machInst);
+               if (RC == 31) {
+             //      i = makeNop(i);
+                   std::cout << "nop" << std::endl;
+               } else {
                    (IMM) ? std::cout << "addlimm" << std::endl;
                          : std::cout << "addl" << std::endl;
-               if (RC == 31) {
-                   i = makeNop(i);
-                   std::cout << "nop" << std::endl;
                }
                //return i;
            //}
@@ -229,15 +230,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         case 0x40:  
           // IntegerOperate::addlv(['\n                int32_t tmp  = Ra_sl + Rb_or_imm_sl;\n                // signed overflow occurs when operands have same sign\n                // and sign of result does not match.\n                if (Ra_sl<31:> == Rb_or_imm_sl<31:> && tmp<31:> != Ra_sl<31:>)\n                    fault = new IntegerOverflowFault;\n                Rc_sl = tmp;\n            '],{})
           
-           {
-               AlphaStaticInst *i =
-                   (IMM) ? (AlphaStaticInst *)new AddlvImm(machInst)
-                         : (AlphaStaticInst *)new Addlv(machInst);
+           //{
+               //AlphaStaticInst *i =
+                  // (IMM) ? (AlphaStaticInst *)new AddlvImm(machInst)
+                         //: (AlphaStaticInst *)new Addlv(machInst);
                if (RC == 31) {
-                   i = makeNop(i);
+                   //i = makeNop(i);
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "addlvimm" << std::endl;
+                         : std::cout << "addlv" << std::endl;
                }
-               return i;
-           }
+            //   return i;
+           //}
+           return 0;
           break;
         
         case 0x2:  
@@ -257,15 +263,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         case 0x12:  
           // IntegerOperate::s8addl([' Rc_sl = (Ra_sl << 3) + Rb_or_imm_sl; '],{})
           
-           {
-               AlphaStaticInst *i =
-                   (IMM) ? (AlphaStaticInst *)new S8addlImm(machInst)
-                         : (AlphaStaticInst *)new S8addl(machInst);
+           //{
+            //   AlphaStaticInst *i =
+                 //  (IMM) ? (AlphaStaticInst *)new S8addlImm(machInst)
+                //         : (AlphaStaticInst *)new S8addl(machInst);
                if (RC == 31) {
-                   i = makeNop(i);
+               //    i = makeNop(i);
+                    std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "s8addlimm" << std::endl;
+                         : std::cout << "s8addl" << std::endl;
                }
-               return i;
-           }
+               //return i;
+           //}
+           return 0;
           break;
         
         case 0x20:  
@@ -285,21 +296,26 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         case 0x60:  
           // IntegerOperate::addqv(['\n                uint64_t tmp = Ra + Rb_or_imm;\n                // signed overflow occurs when operands have same sign\n                // and sign of result does not match.\n                if (Ra<63:> == Rb_or_imm<63:> && tmp<63:> != Ra<63:>)\n                    fault = new IntegerOverflowFault;\n                Rc = tmp;\n            '],{})
           
-           {
-               AlphaStaticInst *i =
-                   (IMM) ? (AlphaStaticInst *)new AddqvImm(machInst)
-                         : (AlphaStaticInst *)new Addqv(machInst);
+           //{
+               //AlphaStaticInst *i =
+                   //(IMM) ? (AlphaStaticInst *)new AddqvImm(machInst)
+                         //: (AlphaStaticInst *)new Addqv(machInst);
                if (RC == 31) {
-                   i = makeNop(i);
+                   //i = makeNop(i);
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "addqvimm" << std::endl;
+                         : std::cout << "addqv" << std::endl;
                }
-               return i;
-           }
+               //return i;
+           //}
+           return 0;
           break;
         
         case 0x22:  
           // IntegerOperate::s4addq([' Rc = (Ra << 2) + Rb_or_imm; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new S4addqImm(machInst)
                          : (AlphaStaticInst *)new S4addq(machInst);
@@ -307,13 +323,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "s4addqimm" << std::endl;
+                         : std::cout << "s4addq" << std::endl;
+               }
+           return 0;
           break;
         
         case 0x32:  
           // IntegerOperate::s8addq([' Rc = (Ra << 3) + Rb_or_imm; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new S8addqImm(machInst)
                          : (AlphaStaticInst *)new S8addq(machInst);
@@ -321,13 +344,19 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "s8addqimm" << std::endl;
+                         : std::cout << "s8addq" << std::endl;
+               }
           break;
         
         case 0x9:  
           // IntegerOperate::subl([' Rc_sl = Ra_sl - Rb_or_imm_sl; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new SublImm(machInst)
                          : (AlphaStaticInst *)new Subl(machInst);
@@ -335,13 +364,19 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "sublimm" << std::endl;
+                         : std::cout << "subl" << std::endl;
+               }
           break;
         
         case 0x49:  
           // IntegerOperate::sublv(['\n                int32_t tmp  = Ra_sl - Rb_or_imm_sl;\n                // signed overflow detection is same as for add,\n                // except we need to look at the *complemented*\n                // sign bit of the subtrahend (Rb), i.e., if the initial\n                // signs are the *same* then no overflow can occur\n                if (Ra_sl<31:> != Rb_or_imm_sl<31:> && tmp<31:> != Ra_sl<31:>)\n                    fault = new IntegerOverflowFault;\n                Rc_sl = tmp;\n            '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new SublvImm(machInst)
                          : (AlphaStaticInst *)new Sublv(machInst);
@@ -349,13 +384,19 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "sublvimm" << std::endl;
+                         : std::cout << "sublv" << std::endl;
+               }
           break;
         
         case 0xb:  
           // IntegerOperate::s4subl([' Rc_sl = (Ra_sl << 2) - Rb_or_imm_sl; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new S4sublImm(machInst)
                          : (AlphaStaticInst *)new S4subl(machInst);
@@ -363,13 +404,19 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "s4sublimm" << std::endl;
+                         : std::cout << "s4subl" << std::endl;
+               }
           break;
         
         case 0x1b:  
           // IntegerOperate::s8subl([' Rc_sl = (Ra_sl << 3) - Rb_or_imm_sl; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new S8sublImm(machInst)
                          : (AlphaStaticInst *)new S8subl(machInst);
@@ -377,7 +424,13 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   (IMM) ? std::cout << "s8sublimm" << std::endl;
+                         : std::cout << "s8subl" << std::endl;
+               }
           break;
         
         case 0x29:  
