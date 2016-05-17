@@ -2335,25 +2335,37 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                 case 0x4:  
                   // BasicOperateWithNopCheck::itofs([' Fc_uq = s_to_t(Ra_ul); ', 'FloatCvtOp'],{})
                   
-                   {
+                   /*{
                        AlphaStaticInst *i = new Itofs(machInst);
                        if (RC == 31) {
                            i = makeNop(i);
                        }
                        return i;
+                   }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "itofs" << std::endl;
                    }
+                   return 0;
                   break;
                 
                 case 0x24:  
                   // BasicOperateWithNopCheck::itoft([' Fc_uq = Ra_uq; ', 'FloatCvtOp'],{})
                   
-                   {
+                   /*{
                        AlphaStaticInst *i = new Itoft(machInst);
                        if (RC == 31) {
                            i = makeNop(i);
                        }
                        return i;
+                   }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "itoft" << std::endl;
                    }
+                   return 0;
                   break;
                 
                 case 0x14:  
@@ -2386,39 +2398,57 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                 case 0xb:  
                   // FloatingPointOperate::sqrts(['\n                        if (Fb < 0.0)\n                            fault = new ArithmeticFault;\n                        Fc = sqrt(Fb);\n                    ', 'FloatSqrtOp'],{})
                   
-                   {
+                   /*{
                        AlphaStaticInst *i = new Sqrts(machInst);
                        if (FC == 31) {
                            i = makeNop(i);
                        }
                        return i;
+                   }*/
+                   if (FC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "sqrts" << std::endl;
                    }
+                   return 0;
                   break;
 #else
                 
                 case 0xb:  
                   // FloatingPointOperate::sqrts(['\n                        if (Fb_sf < 0.0)\n                            fault = new ArithmeticFault;\n                        Fc_sf = sqrt(Fb_sf);\n                    ', 'FloatSqrtOp'],{})
                   
-                   {
+                   /*{
                        AlphaStaticInst *i = new Sqrts(machInst);
                        if (FC == 31) {
                            i = makeNop(i);
                        }
                        return i;
+                   }*/
+                   if (FC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "sqrts" << std::endl;
                    }
+                   return 0;
                   break;
 #endif
                 
                 case 0x2b:  
                   // FloatingPointOperate::sqrtt(['\n                        if (Fb < 0.0)\n                            fault = new ArithmeticFault;\n                        Fc = sqrt(Fb);\n                    ', 'FloatSqrtOp'],{})
                   
-                   {
+                   /*{
                        AlphaStaticInst *i = new Sqrtt(machInst);
                        if (FC == 31) {
                            i = makeNop(i);
                        }
                        return i;
+                   }*/
+                   if (FC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "sqrtt" << std::endl;
                    }
+                   return 0;
                   break;
                 
                 default:
@@ -2461,147 +2491,219 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                 case 0x0:  
                   // FloatingPointOperate::adds([' Fc = Fa + Fb; '],{})
                   
-                   {
+                   /*{
                        AlphaStaticInst *i = new Adds(machInst);
                        if (FC == 31) {
                            i = makeNop(i);
                        }
                        return i;
+                   }*/
+                   if (FC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "adds" << std::endl;
                    }
+                   return 0;
                   break;
                 
                 case 0x1:  
                   // FloatingPointOperate::subs([' Fc = Fa - Fb; '],{})
                   
-                   {
+                  /* {
                        AlphaStaticInst *i = new Subs(machInst);
                        if (FC == 31) {
                            i = makeNop(i);
                        }
                        return i;
+                   }*/
+                   if (FC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "subs" << std::endl;
                    }
+                   return 0;
                   break;
                 
                 case 0x2:  
                   // FloatingPointOperate::muls([' Fc = Fa * Fb; ', 'FloatMultOp'],{})
                   
-                   {
+                   /*{
                        AlphaStaticInst *i = new Muls(machInst);
                        if (FC == 31) {
                            i = makeNop(i);
                        }
                        return i;
+                   }*/
+                   if (FC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "muls" << std::endl;
                    }
+                   return 0;
                   break;
                 
                 case 0x3:  
                   // FloatingPointOperate::divs([' Fc = Fa / Fb; ', 'FloatDivOp'],{})
                   
-                   {
+                   /*{
                        AlphaStaticInst *i = new Divs(machInst);
                        if (FC == 31) {
                            i = makeNop(i);
                        }
                        return i;
+                   }*/
+                   if (FC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "divs" << std::endl;
                    }
+                   return 0;
                   break;
 #else
                 
                 case 0x0:  
                   // FloatingPointOperate::adds([' Fc_sf = Fa_sf + Fb_sf; '],{})
                   
-                   {
+                   /*{
                        AlphaStaticInst *i = new Adds(machInst);
                        if (FC == 31) {
                            i = makeNop(i);
                        }
                        return i;
+                   }*/
+                   if (FC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "adds" << std::endl;
                    }
+                   return 0;
                   break;
                 
                 case 0x1:  
                   // FloatingPointOperate::subs([' Fc_sf = Fa_sf - Fb_sf; '],{})
                   
-                   {
+                   /*{
                        AlphaStaticInst *i = new Subs(machInst);
                        if (FC == 31) {
                            i = makeNop(i);
                        }
                        return i;
+                   }*/
+                   if (FC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "subs" << std::endl;
                    }
+                   return 0;
                   break;
                 
                 case 0x2:  
                   // FloatingPointOperate::muls([' Fc_sf = Fa_sf * Fb_sf; ', 'FloatMultOp'],{})
                   
-                   {
+                   /*{
                        AlphaStaticInst *i = new Muls(machInst);
                        if (FC == 31) {
                            i = makeNop(i);
                        }
                        return i;
+                   }*/
+                   if (FC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "muls" << std::endl;
                    }
+                   return 0;
                   break;
                 
                 case 0x3:  
                   // FloatingPointOperate::divs([' Fc_sf = Fa_sf / Fb_sf; ', 'FloatDivOp'],{})
                   
-                   {
+                   /*{
                        AlphaStaticInst *i = new Divs(machInst);
                        if (FC == 31) {
                            i = makeNop(i);
                        }
                        return i;
+                   }*/
+                   if (FC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "divs" << std::endl;
                    }
+                   return 0;
                   break;
 #endif
                 
                 case 0x20:  
                   // FloatingPointOperate::addt([' Fc = Fa + Fb; '],{})
                   
-                   {
+                   /*{
                        AlphaStaticInst *i = new Addt(machInst);
                        if (FC == 31) {
                            i = makeNop(i);
                        }
                        return i;
+                   }*/
+                   if (FC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "addt" << std::endl;
                    }
+                   return 0;
                   break;
                 
                 case 0x21:  
                   // FloatingPointOperate::subt([' Fc = Fa - Fb; '],{})
                   
-                   {
+                   /*{
                        AlphaStaticInst *i = new Subt(machInst);
                        if (FC == 31) {
                            i = makeNop(i);
                        }
                        return i;
+                   }*/
+                   if (FC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "subt" << std::endl;
                    }
+                   return 0;
                   break;
                 
                 case 0x22:  
                   // FloatingPointOperate::mult([' Fc = Fa * Fb; ', 'FloatMultOp'],{})
                   
-                   {
+                   /*{
                        AlphaStaticInst *i = new Mult(machInst);
                        if (FC == 31) {
                            i = makeNop(i);
                        }
                        return i;
+                   }*/
+                   if (FC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "mult" << std::endl;
                    }
+                   return 0;
                   break;
                 
                 case 0x23:  
                   // FloatingPointOperate::divt([' Fc = Fa / Fb; ', 'FloatDivOp'],{})
                   
-                   {
+                   /*{
                        AlphaStaticInst *i = new Divt(machInst);
                        if (FC == 31) {
                            i = makeNop(i);
                        }
                        return i;
+                   }*/
+                   if (FC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "divt" << std::endl;
                    }
+                   return 0;
                   break;
                 
                 default:
