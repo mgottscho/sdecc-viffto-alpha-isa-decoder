@@ -11,7 +11,7 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    uint32_t raw;
+    uint64_t raw;
 
     std::stringstream ss;
     std::string instString(argv[1]);
@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
 
     std::cout << "Raw input: " << instString << std::endl;
     std::cout.fill('0');
-    std::cout << "Interpreted as: 0x" << std::hex << std::setw(8) << raw << std::dec << std::endl;
+    std::cout << "Interpreted as: 0x" << std::hex << std::setw(16) << raw << std::dec << std::endl;
     std::cout.fill(' ');
     
     AlphaISA::ExtMachInst inst = static_cast<AlphaISA::ExtMachInst>(raw);

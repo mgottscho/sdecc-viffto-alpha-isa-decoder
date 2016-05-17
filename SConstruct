@@ -19,5 +19,5 @@ sources = [
     'src/MyDecoder.cc'
 ]
 
-defaultBuild = env.Program(target = 'mipsdecode', source = sources)
+defaultBuild = env.Program(target = 'alphadecode', source = sources)
 Default(defaultBuild)
