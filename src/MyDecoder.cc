@@ -2049,25 +2049,37 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         case 0x3e:  
           // IntegerOperate::maxsb8(['\n                             uint64_t temp = 0;\n                             int hi = 63;\n                             int lo = 56;\n                             for (int i = 7; i >= 0; --i) {\n                                 int8_t ra_sb = Ra_uq<hi:lo>;\n                                 int8_t rb_sb = Rb_uq<hi:lo>;\n                                 temp = ((temp << 8) \n                                         | ((ra_sb > rb_sb) ? Ra_uq<hi:lo>\n                                                          : Rb_uq<hi:lo>));\n                                 hi -= 8;\n                                 lo -= 8;\n                             }\n                             Rc = temp;\n                          '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Maxsb8(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "maxsb8" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x3f:  
           // IntegerOperate::maxsw4(['\n                             uint64_t temp = 0;\n                             int hi = 63;\n                             int lo = 48;\n                             for (int i = 3; i >= 0; --i) {\n                                 int16_t ra_sw = Ra_uq<hi:lo>;\n                                 int16_t rb_sw = Rb_uq<hi:lo>;\n                                 temp = ((temp << 16) \n                                         | ((ra_sw > rb_sw) ? Ra_uq<hi:lo>\n                                                          : Rb_uq<hi:lo>));\n                                 hi -= 16;\n                                 lo -= 16;\n                             }\n                             Rc = temp;\n                          '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Maxsw4(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "maxsw4" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x70:
@@ -2076,13 +2088,19 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
             case 0x1f:  
               // BasicOperateWithNopCheck::ftoit([' Rc = Fa_uq; ', 'FloatCvtOp'],{})
               
-               {
+               /*{
                    AlphaStaticInst *i = new Ftoit(machInst);
                    if (RC == 31) {
                        i = makeNop(i);
                    }
                    return i;
-               }
+               }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "ftoit" << std::endl;
+                   }
+                   return 0;
               break;
             
             default:
@@ -2098,13 +2116,19 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
             case 0x1f:  
               // BasicOperateWithNopCheck::ftois([' Rc_sl = t_to_s(Fa_uq); ', 'FloatCvtOp'],{})
               
-               {
+               /*{
                    AlphaStaticInst *i = new Ftois(machInst);
                    if (RC == 31) {
                        i = makeNop(i);
                    }
                    return i;
-               }
+               }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "ftois" << std::endl;
+                   }
+                   return 0;
               break;
             
             default:
@@ -2208,17 +2232,29 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
     case 0x30:  
       // UncondBranch::br([],{})
       
-          return (RA == 31)
+          /*return (RA == 31)
               ? (StaticInst *)new Br(machInst)
-              : (StaticInst *)new BrAndLink(machInst);
+              : (StaticInst *)new BrAndLink(machInst);*/
+                   if (RA == 31) {
+                       std::cout << "br" << std::endl;
+                   } else {
+                       std::cout << "brandlink" << std::endl;
+                   }
+                   return 0;
       break;
     
     case 0x34:  
       // UncondBranch::bsr(['IsCall'],{})
       
-          return (RA == 31)
+          /*return (RA == 31)
               ? (StaticInst *)new Bsr(machInst)
-              : (StaticInst *)new BsrAndLink(machInst);
+              : (StaticInst *)new BsrAndLink(machInst);*/
+                   if (RA == 31) {
+                       std::cout << "bsr" << std::endl;
+                   } else {
+                       std::cout << "bsrandlink" << std::endl;
+                   }
+                   return 0;
       break;
     
     case 0x1a:
@@ -2227,33 +2263,57 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         case 0x0:  
           // Jump::jmp([],{})
           
-              return (RA == 31)
+              /*return (RA == 31)
                   ? (StaticInst *)new Jmp(machInst)
-                  : (StaticInst *)new JmpAndLink(machInst);
+                  : (StaticInst *)new JmpAndLink(machInst);*/
+                   if (RA == 31) {
+                       std::cout << "jmp" << std::endl;
+                   } else {
+                       std::cout << "jmpandlink" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x1:  
           // Jump::jsr(['IsCall'],{})
           
-              return (RA == 31)
+              /*return (RA == 31)
                   ? (StaticInst *)new Jsr(machInst)
-                  : (StaticInst *)new JsrAndLink(machInst);
+                  : (StaticInst *)new JsrAndLink(machInst);*/
+                   if (RA == 31) {
+                       std::cout << "jsr" << std::endl;
+                   } else {
+                       std::cout << "jsrandlink" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x2:  
           // Jump::ret(['IsReturn'],{})
           
-              return (RA == 31)
+              /*return (RA == 31)
                   ? (StaticInst *)new Ret(machInst)
-                  : (StaticInst *)new RetAndLink(machInst);
+                  : (StaticInst *)new RetAndLink(machInst);*/
+                   if (RA == 31) {
+                       std::cout << "ret" << std::endl;
+                   } else {
+                       std::cout << "retandlink" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x3:  
           // Jump::jsr_coroutine(['IsCall', 'IsReturn'],{})
           
-              return (RA == 31)
+              /*return (RA == 31)
                   ? (StaticInst *)new Jsr_coroutine(machInst)
-                  : (StaticInst *)new Jsr_coroutineAndLink(machInst);
+                  : (StaticInst *)new Jsr_coroutineAndLink(machInst);*/
+                   if (RA == 31) {
+                       std::cout << "jsr_coroutine" << std::endl;
+                   } else {
+                       std::cout << "jsr_coroutineandlink" << std::endl;
+                   }
+                   return 0;
           break;
         
         default:
