@@ -2726,49 +2726,73 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
             case 0xa5: case 0x5a5:  
               // BasicOperateWithNopCheck::cmpteq([' Fc = (Fa == Fb) ? 2.0 : 0.0; ', 'FloatCmpOp'],{})
               
-               {
+               /*{
                    AlphaStaticInst *i = new Cmpteq(machInst);
                    if (RC == 31) {
                        i = makeNop(i);
                    }
                    return i;
-               }
+               }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "cmpteq" << std::endl;
+                   }
+                   return 0;
               break;
             
             case 0xa7: case 0x5a7:  
               // BasicOperateWithNopCheck::cmptle([' Fc = (Fa <= Fb) ? 2.0 : 0.0; ', 'FloatCmpOp'],{})
               
-               {
+               /*{
                    AlphaStaticInst *i = new Cmptle(machInst);
                    if (RC == 31) {
                        i = makeNop(i);
                    }
                    return i;
-               }
+               }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "cmptle" << std::endl;
+                   }
+                   return 0;
               break;
             
             case 0xa6: case 0x5a6:  
               // BasicOperateWithNopCheck::cmptlt([' Fc = (Fa <  Fb) ? 2.0 : 0.0; ', 'FloatCmpOp'],{})
               
-               {
+               /*{
                    AlphaStaticInst *i = new Cmptlt(machInst);
                    if (RC == 31) {
                        i = makeNop(i);
                    }
                    return i;
-               }
+               }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "cmptlt" << std::endl;
+                   }
+                   return 0;
               break;
             
             case 0xa4: case 0x5a4:  
               // BasicOperateWithNopCheck::cmptun([' // unordered\n                    Fc = (!(Fa < Fb) && !(Fa == Fb) && !(Fa > Fb)) ? 2.0 : 0.0;\n                ', 'FloatCmpOp'],{})
               
-               {
+               /*{
                    AlphaStaticInst *i = new Cmptun(machInst);
                    if (RC == 31) {
                        i = makeNop(i);
                    }
                    return i;
-               }
+               }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "cmptun" << std::endl;
+                   }
+                   return 0;
               break;
             
             default:
@@ -2790,37 +2814,55 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                     case 0x0:  
                       // FPFixedRounding::cvttq([' Fc_sq = (int64_t)trunc(Fb); ', 'Chopped'],{})
                       
-                       {
+                       /*{
                            AlphaStaticInst *i = new CvttqChopped(machInst);
                            if (FC == 31) {
                                i = makeNop(i);
                            }
                            return i;
-                       }
+                       }*/
+                           if (FC == 31) {
+                               std::cout << "nop" << std::endl;
+                           } else {
+                               std::cout << "cvttqchopped" << std::endl;
+                           }
+                           return 0;
                       break;
                     
                     case 0x1:  
                       // FPFixedRounding::cvttq([' Fc_sq = (int64_t)floor(Fb); ', 'MinusInfinity'],{})
                       
-                       {
+                       /*{
                            AlphaStaticInst *i = new CvttqMinusInfinity(machInst);
                            if (FC == 31) {
                                i = makeNop(i);
                            }
                            return i;
-                       }
+                       }*/
+                           if (FC == 31) {
+                               std::cout << "nop" << std::endl;
+                           } else {
+                               std::cout << "cvttqminusinfinity" << std::endl;
+                           }
+                           return 0;
                       break;
                     
                     default:  
                       // FloatingPointOperate::cvttq([' Fc_sq = (int64_t)nearbyint(Fb); '],{})
                       
-                       {
+                       /*{
                            AlphaStaticInst *i = new Cvttq(machInst);
                            if (FC == 31) {
                                i = makeNop(i);
                            }
                            return i;
-                       }
+                       }*/
+                           if (FC == 31) {
+                               std::cout << "nop" << std::endl;
+                           } else {
+                               std::cout << "cvttq" << std::endl;
+                           }
+                           return 0;
                       break;
                     }
                   
@@ -2830,25 +2872,37 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                     case 0x2ac: case 0x6ac:  
                       // BasicOperateWithNopCheck::cvtst([' Fc = Fb_sf; '],{})
                       
-                       {
+                       /*{
                            AlphaStaticInst *i = new Cvtst(machInst);
                            if (RC == 31) {
                                i = makeNop(i);
                            }
                            return i;
-                       }
+                       }*/
+                           if (FC == 31) {
+                               std::cout << "nop" << std::endl;
+                           } else {
+                               std::cout << "cvtst" << std::endl;
+                           }
+                           return 0;
                       break;
                     
                     default:  
                       // FloatingPointOperate::cvtts([' Fc_sf = Fb; '],{})
                       
-                       {
+                       /*{
                            AlphaStaticInst *i = new Cvtts(machInst);
                            if (FC == 31) {
                                i = makeNop(i);
                            }
                            return i;
-                       }
+                       }*/
+                           if (FC == 31) {
+                               std::cout << "nop" << std::endl;
+                           } else {
+                               std::cout << "cvtts" << std::endl;
+                           }
+                           return 0;
                       break;
                     }
                   
@@ -2858,13 +2912,19 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                     case 0x0: case 0x7:  
                       // FloatingPointOperate::cvtqs([' Fc_sf = Fb_sq; '],{})
                       
-                       {
+                       /*{
                            AlphaStaticInst *i = new Cvtqs(machInst);
                            if (FC == 31) {
                                i = makeNop(i);
                            }
                            return i;
-                       }
+                       }*/
+                           if (FC == 31) {
+                               std::cout << "nop" << std::endl;
+                           } else {
+                               std::cout << "cvtqs" << std::endl;
+                           }
+                           return 0;
                       break;
                     
                     default:
@@ -2880,13 +2940,19 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                     case 0x0: case 0x7:  
                       // FloatingPointOperate::cvtqt([' Fc    = Fb_sq; '],{})
                       
-                       {
+                       /*{
                            AlphaStaticInst *i = new Cvtqt(machInst);
                            if (FC == 31) {
                                i = makeNop(i);
                            }
                            return i;
-                       }
+                       }*/
+                           if (FC == 31) {
+                               std::cout << "nop" << std::endl;
+                           } else {
+                               std::cout << "cvtqt" << std::endl;
+                           }
+                           return 0;
                       break;
                     
                     default:
@@ -2923,13 +2989,19 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         case 0x10:  
           // BasicOperateWithNopCheck::cvtlq(['\n                Fc_sl = (Fb_uq<63:62> << 30) | Fb_uq<58:29>;\n            '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Cvtlq(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   std::cout << "cvtlq" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x30:  
