@@ -3007,157 +3007,235 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         case 0x30:  
           // BasicOperateWithNopCheck::cvtql(['\n                Fc_uq = (Fb_uq<31:30> << 62) | (Fb_uq<29:0> << 29);\n            '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Cvtql(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   std::cout << "cvtql" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x130: case 0x530:  
           // BasicOperateWithNopCheck::cvtqlv(['\n                // To avoid overflow, all the upper 32 bits must match\n                // the sign bit of the lower 32.  We code this as\n                // checking the upper 33 bits for all 0s or all 1s.\n                uint64_t sign_bits = Fb_uq<63:31>;\n                if (sign_bits != 0 && sign_bits != mask(33))\n                    fault = new IntegerOverflowFault;\n                Fc_uq = (Fb_uq<31:30> << 62) | (Fb_uq<29:0> << 29);\n            '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Cvtqlv(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   std::cout << "cvtqlv" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x20:  
           // BasicOperateWithNopCheck::cpys(['  // copy sign\n                Fc_uq = (Fa_uq<63:> << 63) | Fb_uq<62:0>;\n            '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Cpys(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   std::cout << "cpys" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x21:  
           // BasicOperateWithNopCheck::cpysn([' // copy sign negated\n                Fc_uq = (~Fa_uq<63:> << 63) | Fb_uq<62:0>;\n            '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Cpysn(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   std::cout << "cpysn" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x22:  
           // BasicOperateWithNopCheck::cpyse([' // copy sign and exponent\n                Fc_uq = (Fa_uq<63:52> << 52) | Fb_uq<51:0>;\n            '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Cpyse(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   std::cout << "cpyse" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x2a:  
           // BasicOperateWithNopCheck::fcmoveq([' Fc = (Fa == 0) ? Fb : Fc; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Fcmoveq(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   std::cout << "fcmoveq" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x2b:  
           // BasicOperateWithNopCheck::fcmovne([' Fc = (Fa != 0) ? Fb : Fc; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Fcmovne(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   std::cout << "fcmovne" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x2c:  
           // BasicOperateWithNopCheck::fcmovlt([' Fc = (Fa <  0) ? Fb : Fc; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Fcmovlt(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   std::cout << "fcmovlt" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x2d:  
           // BasicOperateWithNopCheck::fcmovge([' Fc = (Fa >= 0) ? Fb : Fc; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Fcmovge(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   std::cout << "fcmovge" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x2e:  
           // BasicOperateWithNopCheck::fcmovle([' Fc = (Fa <= 0) ? Fb : Fc; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Fcmovle(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   std::cout << "fcmovle" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x2f:  
           // BasicOperateWithNopCheck::fcmovgt([' Fc = (Fa >  0) ? Fb : Fc; '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Fcmovgt(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   std::cout << "fcmovgt" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x24:  
           // BasicOperateWithNopCheck::mt_fpcr([' FPCR = Fa_uq; ', 'IsIprAccess'],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Mt_fpcr(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   std::cout << "mt_fpcr" << std::endl;
+               }
+               return 0;
           break;
         
         case 0x25:  
           // BasicOperateWithNopCheck::mf_fpcr([' Fa_uq = FPCR; ', 'IsIprAccess'],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Mf_fpcr(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+               if (RC == 31) {
+                   std::cout << "nop" << std::endl;
+               } else {
+                   std::cout << "mf_fpcr" << std::endl;
+               }
+               return 0;
           break;
         
         default:
@@ -3466,133 +3544,133 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         case 0x0:  
           // BasicOperate::arm(['\n                PseudoInst::arm(xc->tcBase());\n            ', 'IsNonSpeculative'],{})
           
-              std::cout << "arm" << std::endl; return 0; // Arm(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Arm(machInst);
           break;
         
         case 0x1:  
           // BasicOperate::quiesce(["\n                // Don't sleep if (unmasked) interrupts are pending\n                Interrupts* interrupts =\n                    xc->tcBase()->getCpuPtr()->getInterruptController();\n                if (interrupts->checkInterrupts(xc->tcBase())) {\n                    PseudoInst::quiesceSkip(xc->tcBase());\n                } else {\n                    PseudoInst::quiesce(xc->tcBase());\n                }\n            ", 'IsNonSpeculative', 'IsQuiesce'],{})
           
-              std::cout << "quiesce" << std::endl; return 0; // Quiesce(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Quiesce(machInst);
           break;
         
         case 0x2:  
           // BasicOperate::quiesceNs(['\n                PseudoInst::quiesceNs(xc->tcBase(), R16);\n            ', 'IsNonSpeculative', 'IsQuiesce'],{})
           
-              std::cout << "quiescens" << std::endl; return 0; // QuiesceNs(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // QuiesceNs(machInst);
           break;
         
         case 0x3:  
           // BasicOperate::quiesceCycles(['\n                PseudoInst::quiesceCycles(xc->tcBase(), R16);\n            ', 'IsNonSpeculative', 'IsQuiesce', 'IsUnverifiable'],{})
           
-              std::cout << "quiescecycles" << std::endl; return 0; // QuiesceCycles(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // QuiesceCycles(machInst);
           break;
         
         case 0x4:  
           // BasicOperate::quiesceTime(['\n                R0 = PseudoInst::quiesceTime(xc->tcBase());\n            ', 'IsNonSpeculative', 'IsUnverifiable'],{})
           
-              std::cout << "quiescetime" << std::endl; return 0; // QuiesceTime(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // QuiesceTime(machInst);
           break;
         
         case 0x7:  
           // BasicOperate::rpns(['\n                R0 = PseudoInst::rpns(xc->tcBase());\n            ', 'IsNonSpeculative', 'IsUnverifiable'],{})
           
-              std::cout << "rpns" << std::endl; return 0; // Rpns(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Rpns(machInst);
           break;
         
         case 0x9:  
           // BasicOperate::wakeCPU(['\n                PseudoInst::wakeCPU(xc->tcBase(), R16);\n            ', 'IsNonSpeculative', 'IsUnverifiable'],{})
           
-              std::cout << "wakecpu" << std::endl; return 0; // WakeCPU(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // WakeCPU(machInst);
           break;
         
         case 0x10:  
           // BasicOperate::deprecated_ivlb(['\n                warn_once("Obsolete M5 ivlb instruction encountered.\\n");\n            '],{})
           
-              std::cout << "deprecated_ivlb" << std::endl; return 0; // Deprecated_ivlb(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Deprecated_ivlb(machInst);
           break;
         
         case 0x11:  
           // BasicOperate::deprecated_ivle(['\n                warn_once("Obsolete M5 ivlb instruction encountered.\\n");\n            '],{})
           
-              std::cout << "deprecated_ivle" << std::endl; return 0; // Deprecated_ivle(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Deprecated_ivle(machInst);
           break;
         
         case 0x20:  
           // BasicOperate::deprecated_exit(['\n                warn_once("deprecated M5 exit instruction encountered.\\n");\n                PseudoInst::m5exit(xc->tcBase(), 0);\n            ', 'No_OpClass', 'IsNonSpeculative'],{})
           
-              std::cout << "deprecated_exit" << std::endl; return 0; // Deprecated_exit(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Deprecated_exit(machInst);
           break;
         
         case 0x21:  
           // BasicOperate::m5exit(['\n                PseudoInst::m5exit(xc->tcBase(), R16);\n            ', 'No_OpClass', 'IsNonSpeculative'],{})
           
-              std::cout << "m5exit" << std::endl; return 0; // M5exit(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // M5exit(machInst);
           break;
         
         case 0x31:  
           // BasicOperate::loadsymbol(['\n                PseudoInst::loadsymbol(xc->tcBase());\n            ', 'No_OpClass', 'IsNonSpeculative'],{})
           
-              std::cout << "loadsymbol" << std::endl; return 0; // Loadsymbol(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Loadsymbol(machInst);
           break;
         
         case 0x30:  
           // BasicOperate::initparam(['\n                Ra = PseudoInst::initParam(xc->tcBase());\n            '],{})
           
-              std::cout << "initparam" << std::endl; return 0; // Initparam(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Initparam(machInst);
           break;
         
         case 0x40:  
           // BasicOperate::resetstats(['\n                PseudoInst::resetstats(xc->tcBase(), R16, R17);\n            ', 'IsNonSpeculative'],{})
           
-              std::cout << "resetstats" << std::endl; return 0; // Resetstats(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Resetstats(machInst);
           break;
         
         case 0x41:  
           // BasicOperate::dumpstats(['\n                PseudoInst::dumpstats(xc->tcBase(), R16, R17);\n            ', 'IsNonSpeculative'],{})
           
-              std::cout << "dumpstats" << std::endl; return 0; // Dumpstats(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Dumpstats(machInst);
           break;
         
         case 0x42:  
           // BasicOperate::dumpresetstats(['\n                PseudoInst::dumpresetstats(xc->tcBase(), R16, R17);\n            ', 'IsNonSpeculative'],{})
           
-              std::cout << "dumpresetstats" << std::endl; return 0; // Dumpresetstats(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // Dumpresetstats(machInst);
           break;
         
         case 0x43:  
           // BasicOperate::m5checkpoint(['\n                PseudoInst::m5checkpoint(xc->tcBase(), R16, R17);\n            ', 'IsNonSpeculative'],{})
           
-              std::cout << "m5checkpoint" << std::endl; return 0; // M5checkpoint(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // M5checkpoint(machInst);
           break;
         
         case 0x50:  
           // BasicOperate::m5readfile(['\n                R0 = PseudoInst::readfile(xc->tcBase(), R16, R17, R18);\n            ', 'IsNonSpeculative'],{})
           
-              std::cout << "m5readfile" << std::endl; return 0; // M5readfile(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // M5readfile(machInst);
           break;
         
         case 0x51:  
           // BasicOperate::m5break(['\n                PseudoInst::debugbreak(xc->tcBase());\n            ', 'IsNonSpeculative'],{})
           
-              std::cout << "m5break" << std::endl; return 0; // M5break(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // M5break(machInst);
           break;
         
         case 0x52:  
           // BasicOperate::m5switchcpu(['\n                PseudoInst::switchcpu(xc->tcBase());\n            ', 'IsNonSpeculative'],{})
           
-              std::cout << "m5switchcpu" << std::endl; return 0; // M5switchcpu(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // M5switchcpu(machInst);
           break;
         
         case 0x53:  
           // BasicOperate::m5addsymbol(['\n                PseudoInst::addsymbol(xc->tcBase(), R16, R17);\n            ', 'IsNonSpeculative'],{})
           
-              std::cout << "m5addsymbol" << std::endl; return 0; // M5addsymbol(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // M5addsymbol(machInst);
           break;
         
         case 0x54:  
           // BasicOperate::m5panic(['\n                panic("M5 panic instruction called at pc = %#x.", PC);\n            ', 'IsNonSpeculative'],{})
           
-              std::cout << "m5panic" << std::endl; return 0; // M5panic(machInst);
+              std::cout << "UNKNOWN" << std::endl; return 1; // M5panic(machInst);
           break;
 #define  CPANN(lbl) CPA::cpa()->lbl(xc->tcBase())
         
@@ -3602,103 +3680,103 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
             case 0x0:  
               // BasicOperate::m5a_old(['\n                    panic("Deprecated M5 annotate instruction executed "\n                          "at pc = %#x\\n", PC);\n                ', 'IsNonSpeculative'],{})
               
-                  std::cout << "m5a_old" << std::endl; return 0; // M5a_old(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // M5a_old(machInst);
               break;
             
             case 0x1:  
               // BasicOperate::m5a_bsm(['\n                    CPANN(swSmBegin);\n                ', 'IsNonSpeculative'],{})
               
-                  std::cout << "m5a_bsm" << std::endl; return 0; // M5a_bsm(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // M5a_bsm(machInst);
               break;
             
             case 0x2:  
               // BasicOperate::m5a_esm(['\n                    CPANN(swSmEnd);\n                ', 'IsNonSpeculative'],{})
               
-                  std::cout << "m5a_esm" << std::endl; return 0; // M5a_esm(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // M5a_esm(machInst);
               break;
             
             case 0x3:  
               // BasicOperate::m5a_begin(['\n                    CPANN(swExplictBegin);\n                ', 'IsNonSpeculative'],{})
               
-                  std::cout << "m5a_begin" << std::endl; return 0; // M5a_begin(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // M5a_begin(machInst);
               break;
             
             case 0x4:  
               // BasicOperate::m5a_end(['\n                    CPANN(swEnd);\n                ', 'IsNonSpeculative'],{})
               
-                  std::cout << "m5a_end" << std::endl; return 0; // M5a_end(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // M5a_end(machInst);
               break;
             
             case 0x6:  
               // BasicOperate::m5a_q(['\n                    CPANN(swQ);\n                ', 'IsNonSpeculative'],{})
               
-                  std::cout << "m5a_q" << std::endl; return 0; // M5a_q(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // M5a_q(machInst);
               break;
             
             case 0x7:  
               // BasicOperate::m5a_dq(['\n                    CPANN(swDq);\n                ', 'IsNonSpeculative'],{})
               
-                  std::cout << "m5a_dq" << std::endl; return 0; // M5a_dq(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // M5a_dq(machInst);
               break;
             
             case 0x8:  
               // BasicOperate::m5a_wf(['\n                    CPANN(swWf);\n                ', 'IsNonSpeculative'],{})
               
-                  std::cout << "m5a_wf" << std::endl; return 0; // M5a_wf(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // M5a_wf(machInst);
               break;
             
             case 0x9:  
               // BasicOperate::m5a_we(['\n                    CPANN(swWe);\n                ', 'IsNonSpeculative'],{})
               
-                  std::cout << "m5a_we" << std::endl; return 0; // M5a_we(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // M5a_we(machInst);
               break;
             
             case 0xc:  
               // BasicOperate::m5a_sq(['\n                    CPANN(swSq);\n                ', 'IsNonSpeculative'],{})
               
-                  std::cout << "m5a_sq" << std::endl; return 0; // M5a_sq(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // M5a_sq(machInst);
               break;
             
             case 0xd:  
               // BasicOperate::m5a_aq(['\n                    CPANN(swAq);\n                ', 'IsNonSpeculative'],{})
               
-                  std::cout << "m5a_aq" << std::endl; return 0; // M5a_aq(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // M5a_aq(machInst);
               break;
             
             case 0xe:  
               // BasicOperate::m5a_pq(['\n                    CPANN(swPq);\n                ', 'IsNonSpeculative'],{})
               
-                  std::cout << "m5a_pq" << std::endl; return 0; // M5a_pq(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // M5a_pq(machInst);
               break;
             
             case 0xf:  
               // BasicOperate::m5a_l(['\n                    CPANN(swLink);\n                ', 'IsNonSpeculative'],{})
               
-                  std::cout << "m5a_l" << std::endl; return 0; // M5a_l(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // M5a_l(machInst);
               break;
             
             case 0x10:  
               // BasicOperate::m5a_identify(['\n                    CPANN(swIdentify);\n                ', 'IsNonSpeculative'],{})
               
-                  std::cout << "m5a_identify" << std::endl; return 0; // M5a_identify(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // M5a_identify(machInst);
               break;
             
             case 0x11:  
               // BasicOperate::m5a_getid(['\n                    R0 = CPANN(swGetId);\n                ', 'IsNonSpeculative'],{})
               
-                  std::cout << "m5a_getid" << std::endl; return 0; // M5a_getid(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // M5a_getid(machInst);
               break;
             
             case 0x13:  
               // BasicOperate::m5a_scl(['\n                    CPANN(swSyscallLink);\n                ', 'IsNonSpeculative'],{})
               
-                  std::cout << "m5a_scl" << std::endl; return 0; // M5a_scl(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // M5a_scl(machInst);
               break;
             
             case 0x14:  
               // BasicOperate::m5a_rq(['\n                    CPANN(swRq);\n                ', 'IsNonSpeculative'],{})
               
-                  std::cout << "m5a_rq" << std::endl; return 0; // M5a_rq(machInst);
+                  std::cout << "UNKNOWN" << std::endl; return 1; // M5a_rq(machInst);
               break;
             
             default:
