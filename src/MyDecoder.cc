@@ -1620,7 +1620,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         case 0x0:  
           // IntegerOperate::mull([' Rc_sl = Ra_sl * Rb_or_imm_sl; ', 'IntMultOp'],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new MullImm(machInst)
                          : (AlphaStaticInst *)new Mull(machInst);
@@ -1628,13 +1628,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "mullimm" << std::endl
+                             : std::cout << "mull" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x20:  
           // IntegerOperate::mulq([' Rc    = Ra    * Rb_or_imm;    ', 'IntMultOp'],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new MulqImm(machInst)
                          : (AlphaStaticInst *)new Mulq(machInst);
@@ -1642,13 +1649,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "mulqimm" << std::endl
+                             : std::cout << "mulq" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x30:  
           // IntegerOperate::umulh(['\n                uint64_t hi, lo;\n                mul128(Ra, Rb_or_imm, hi, lo);\n                Rc = hi;\n            ', 'IntMultOp'],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new UmulhImm(machInst)
                          : (AlphaStaticInst *)new Umulh(machInst);
@@ -1656,13 +1670,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "umulhimm" << std::endl
+                             : std::cout << "umulh" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x40:  
           // IntegerOperate::mullv(['\n                // 32-bit multiply with trap on overflow\n                int64_t Rax = Ra_sl;    // sign extended version of Ra_sl\n                int64_t Rbx = Rb_or_imm_sl;\n                int64_t tmp = Rax * Rbx;\n                // To avoid overflow, all the upper 32 bits must match\n                // the sign bit of the lower 32.  We code this as\n                // checking the upper 33 bits for all 0s or all 1s.\n                uint64_t sign_bits = tmp<63:31>;\n                if (sign_bits != 0 && sign_bits != mask(33))\n                    fault = new IntegerOverflowFault;\n                Rc_sl = tmp<31:0>;\n            ', 'IntMultOp'],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new MullvImm(machInst)
                          : (AlphaStaticInst *)new Mullv(machInst);
@@ -1670,13 +1691,20 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "mullvimm" << std::endl
+                             : std::cout << "mullv" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x60:  
           // IntegerOperate::mulqv(['\n                // 64-bit multiply with trap on overflow\n                uint64_t hi, lo;\n                mul128(Ra, Rb_or_imm, hi, lo);\n                // all the upper 64 bits must match the sign bit of\n                // the lower 64\n                if (!((hi == 0 && lo<63:> == 0) ||\n                      (hi == mask(64) && lo<63:> == 1)))\n                    fault = new IntegerOverflowFault;\n                Rc = lo;\n            ', 'IntMultOp'],{})
           
-           {
+           /*{
                AlphaStaticInst *i =
                    (IMM) ? (AlphaStaticInst *)new MulqvImm(machInst)
                          : (AlphaStaticInst *)new Mulqv(machInst);
@@ -1684,7 +1712,14 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "mulqvimm" << std::endl
+                             : std::cout << "mulqv" << std::endl;
+                   }
+                   return 0;
           break;
         
         default:
@@ -1703,7 +1738,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
             case 0x1f:  
               // IntegerOperate::sextb([' Rc_sb = Rb_or_imm< 7:0>; '],{})
               
-               {
+               /*{
                    AlphaStaticInst *i =
                        (IMM) ? (AlphaStaticInst *)new SextbImm(machInst)
                              : (AlphaStaticInst *)new Sextb(machInst);
@@ -1711,7 +1746,14 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                        i = makeNop(i);
                    }
                    return i;
-               }
+               }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "sextbimm" << std::endl
+                             : std::cout << "sextb" << std::endl;
+                   }
+                   return 0;
               break;
             
             default:
@@ -1727,7 +1769,7 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
             case 0x1f:  
               // IntegerOperate::sextw([' Rc_sw = Rb_or_imm<15:0>; '],{})
               
-               {
+               /*{
                    AlphaStaticInst *i =
                        (IMM) ? (AlphaStaticInst *)new SextwImm(machInst)
                              : (AlphaStaticInst *)new Sextw(machInst);
@@ -1735,7 +1777,14 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
                        i = makeNop(i);
                    }
                    return i;
-               }
+               }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       (IMM) ? std::cout << "sextwimm" << std::endl
+                             : std::cout << "sextw" << std::endl;
+                   }
+                   return 0;
               break;
             
             default:
@@ -1748,169 +1797,253 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         case 0x30:  
           // IntegerOperate::ctpop(['\n                             uint64_t count = 0;\n                             for (int i = 0; Rb<63:i>; ++i) {\n                                 if (Rb<i:i> == 0x1)\n                                     ++count;\n                             }\n                             Rc = count;\n                           ', 'IntAluOp'],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Ctpop(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "ctpop" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x31:  
           // IntegerOperate::perr(['\n                             uint64_t temp = 0;\n                             int hi = 7;\n                             int lo = 0;\n                             for (int i = 0; i < 8; ++i) {\n                                 uint8_t ra_ub = Ra_uq<hi:lo>;\n                                 uint8_t rb_ub = Rb_uq<hi:lo>;\n                                 temp += (ra_ub >= rb_ub) ? \n                                         (ra_ub - rb_ub) : (rb_ub - ra_ub);\n                                 hi += 8;\n                                 lo += 8;\n                             }\n                             Rc = temp;\n                           '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Perr(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "perr" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x32:  
           // IntegerOperate::ctlz(['\n                             uint64_t count = 0;\n                             uint64_t temp = Rb;\n                             if (temp<63:32>) temp >>= 32; else count += 32;\n                             if (temp<31:16>) temp >>= 16; else count += 16;\n                             if (temp<15:8>) temp >>= 8; else count += 8;\n                             if (temp<7:4>) temp >>= 4; else count += 4;\n                             if (temp<3:2>) temp >>= 2; else count += 2;\n                             if (temp<1:1>) temp >>= 1; else count += 1;\n                             if ((temp<0:0>) != 0x1) count += 1;\n                             Rc = count;\n                           ', 'IntAluOp'],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Ctlz(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "ctlz" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x33:  
           // IntegerOperate::cttz(['\n                             uint64_t count = 0;\n                             uint64_t temp = Rb;\n                             if (!(temp<31:0>)) { temp >>= 32; count += 32; }\n                             if (!(temp<15:0>)) { temp >>= 16; count += 16; }\n                             if (!(temp<7:0>)) { temp >>= 8; count += 8; }\n                             if (!(temp<3:0>)) { temp >>= 4; count += 4; }\n                             if (!(temp<1:0>)) { temp >>= 2; count += 2; }\n                             if (!(temp<0:0> & ULL(0x1))) { \n                                 temp >>= 1; count += 1; \n                             }\n                             if (!(temp<0:0> & ULL(0x1))) count += 1;\n                             Rc = count;\n                           ', 'IntAluOp'],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Cttz(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "cttz" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x34:  
           // IntegerOperate::unpkbw([' \n                             Rc = (Rb_uq<7:0>\n                                   | (Rb_uq<15:8> << 16)\n                                   | (Rb_uq<23:16> << 32)\n                                   | (Rb_uq<31:24> << 48));\n                           ', 'IntAluOp'],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Unpkbw(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "unpkbw" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x35:  
           // IntegerOperate::unpkbl(['\n                             Rc = (Rb_uq<7:0> | (Rb_uq<15:8> << 32));\n                           ', 'IntAluOp'],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Unpkbl(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "unpkbl" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x36:  
           // IntegerOperate::pkwb(['\n                             Rc = (Rb_uq<7:0>\n                                   | (Rb_uq<23:16> << 8)\n                                   | (Rb_uq<39:32> << 16)\n                                   | (Rb_uq<55:48> << 24));\n                           ', 'IntAluOp'],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Pkwb(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "pkwb" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x37:  
           // IntegerOperate::pklb(['\n                             Rc = (Rb_uq<7:0> | (Rb_uq<39:32> << 8));\n                           ', 'IntAluOp'],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Pklb(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "pklb" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x38:  
           // IntegerOperate::minsb8(['\n                             uint64_t temp = 0;\n                             int hi = 63;\n                             int lo = 56;\n                             for (int i = 7; i >= 0; --i) {\n                                 int8_t ra_sb = Ra_uq<hi:lo>;\n                                 int8_t rb_sb = Rb_uq<hi:lo>;\n                                 temp = ((temp << 8) \n                                         | ((ra_sb < rb_sb) ? Ra_uq<hi:lo>\n                                                          : Rb_uq<hi:lo>));\n                                 hi -= 8;\n                                 lo -= 8;\n                             }\n                             Rc = temp;\n                          '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Minsb8(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "minsb8" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x39:  
           // IntegerOperate::minsw4(['\n                             uint64_t temp = 0;\n                             int hi = 63;\n                             int lo = 48;\n                             for (int i = 3; i >= 0; --i) {\n                                 int16_t ra_sw = Ra_uq<hi:lo>;\n                                 int16_t rb_sw = Rb_uq<hi:lo>;\n                                 temp = ((temp << 16) \n                                         | ((ra_sw < rb_sw) ? Ra_uq<hi:lo>\n                                                          : Rb_uq<hi:lo>));\n                                 hi -= 16;\n                                 lo -= 16;\n                             }\n                             Rc = temp;\n                          '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Minsw4(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "minsw4" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x3a:  
           // IntegerOperate::minub8(['\n                             uint64_t temp = 0;\n                             int hi = 63;\n                             int lo = 56;\n                             for (int i = 7; i >= 0; --i) {\n                                 uint8_t ra_ub = Ra_uq<hi:lo>;\n                                 uint8_t rb_ub = Rb_uq<hi:lo>;\n                                 temp = ((temp << 8) \n                                         | ((ra_ub < rb_ub) ? Ra_uq<hi:lo>\n                                                          : Rb_uq<hi:lo>));\n                                 hi -= 8;\n                                 lo -= 8;\n                             }\n                             Rc = temp;\n                          '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Minub8(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "minub8" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x3b:  
           // IntegerOperate::minuw4(['\n                             uint64_t temp = 0;\n                             int hi = 63;\n                             int lo = 48;\n                             for (int i = 3; i >= 0; --i) {\n                                 uint16_t ra_sw = Ra_uq<hi:lo>;\n                                 uint16_t rb_sw = Rb_uq<hi:lo>;\n                                 temp = ((temp << 16) \n                                         | ((ra_sw < rb_sw) ? Ra_uq<hi:lo>\n                                                          : Rb_uq<hi:lo>));\n                                 hi -= 16;\n                                 lo -= 16;\n                             }\n                             Rc = temp;\n                          '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Minuw4(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "minuw4" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x3c:  
           // IntegerOperate::maxub8(['\n                             uint64_t temp = 0;\n                             int hi = 63;\n                             int lo = 56;\n                             for (int i = 7; i >= 0; --i) {\n                                 uint8_t ra_ub = Ra_uq<hi:lo>;\n                                 uint8_t rb_ub = Rb_uq<hi:lo>;\n                                 temp = ((temp << 8) \n                                         | ((ra_ub > rb_ub) ? Ra_uq<hi:lo>\n                                                          : Rb_uq<hi:lo>));\n                                 hi -= 8;\n                                 lo -= 8;\n                             }\n                             Rc = temp;\n                          '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Maxub8(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "maxub8" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x3d:  
           // IntegerOperate::maxuw4(['\n                             uint64_t temp = 0;\n                             int hi = 63;\n                             int lo = 48;\n                             for (int i = 3; i >= 0; --i) {\n                                 uint16_t ra_uw = Ra_uq<hi:lo>;\n                                 uint16_t rb_uw = Rb_uq<hi:lo>;\n                                 temp = ((temp << 16) \n                                         | ((ra_uw > rb_uw) ? Ra_uq<hi:lo>\n                                                          : Rb_uq<hi:lo>));\n                                 hi -= 16;\n                                 lo -= 16;\n                             }\n                             Rc = temp;\n                          '],{})
           
-           {
+           /*{
                AlphaStaticInst *i = new Maxuw4(machInst);
                if (RC == 31) {
                    i = makeNop(i);
                }
                return i;
-           }
+           }*/
+                   if (RC == 31) {
+                       std::cout << "nop" << std::endl;
+                   } else {
+                       std::cout << "maxuw4" << std::endl;
+                   }
+                   return 0;
           break;
         
         case 0x3e:  
