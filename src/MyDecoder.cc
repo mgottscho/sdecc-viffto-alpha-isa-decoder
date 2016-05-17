@@ -4,6 +4,7 @@
 
 using namespace AlphaISA;
 
+uint64_t AlphaISA::FullSystemInt = 0;
 
 bool
 AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
@@ -3303,36 +3304,36 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
           break;
         
         case 0xe000:
-          //switch (FullSystemInt) {
+          switch (FullSystemInt) {
             
-            //case 0x0:  
+            case 0x0:  
               // FailUnimpl::rc_se(([], {}))
               
-                  //std::cout << "rc_se" << std::endl; return 0; // FailUnimplemented("rc_se", machInst);
-              //break;
+                  std::cout << "rc_se" << std::endl; return 0; // FailUnimplemented("rc_se", machInst);
+              break;
             
-            //default:  
+            default:  
               // BasicOperate::rc((['\n                Ra = IntrFlag;\n                IntrFlag = 0;\n            ', 'IsNonSpeculative', 'IsUnverifiable'], {}))
               
                   std::cout << "rc" << std::endl; return 0; // Rc(machInst);
               break;
-            //}
+            }
           
         case 0xf000:
-          //switch (FullSystemInt) {
+          switch (FullSystemInt) {
             
-            //case 0x0:  
+            case 0x0:  
               // FailUnimpl::rs_se(([], {}))
               
-                  //std::cout << "rs_se" << std::endl; return 0; // FailUnimplemented("rs_se", machInst);
-              //break;
+                  std::cout << "rs_se" << std::endl; return 0; // FailUnimplemented("rs_se", machInst);
+              break;
             
-            //default:  
+            default:  
               // BasicOperate::rs((['\n                Ra = IntrFlag;\n                IntrFlag = 1;\n            ', 'IsNonSpeculative', 'IsUnverifiable'], {}))
               
                   std::cout << "rs" << std::endl; return 0; // Rs(machInst);
               break;
-            //}
+            }
           
         default:
           
@@ -3342,9 +3343,9 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
         }
       
     case 0x0:
-      //switch (FullSystemInt) {
+      switch (FullSystemInt) {
         
-        /*case 0x0:
+        case 0x0:
           switch (PALFUNC) {
             
             case 0x0:  
@@ -3376,14 +3377,14 @@ AlphaISA::Decoder::decodeInst(AlphaISA::ExtMachInst machInst)
               // Unknown::unknown(([], {}))
               std::cout << "UNKNOWN" << std::endl; return 1; // Unknown(machInst);
               break;
-            }*/
+            }
           
-        //default:  
+        default:  
           // CallPal::call_pal((['\n            if (!palValid ||\n                (palPriv\n                 && xc->readMiscReg(IPR_ICM) != mode_kernel)) {\n                // invalid pal function code, or attempt to do privileged\n                // PAL call in non-kernel mode\n                fault = new UnimplementedOpcodeFault;\n            } else {\n                // check to see if simulator wants to do something special\n                // on this PAL call (including maybe suppress it)\n                bool dopal = xc->simPalCheck(palFunc);\n\n                if (dopal) {\n                    xc->setMiscReg(IPR_EXC_ADDR, NPC);\n                    NPC = xc->readMiscReg(IPR_PAL_BASE) + palOffset;\n                }\n            }\n        ', 'IsNonSpeculative'], {}))
           
               std::cout << "call_pal" << std::endl; return 0; // Call_pal(machInst);
           break;
-        //}
+        }
       
     case 0x1b:
       switch (PALMODE) {

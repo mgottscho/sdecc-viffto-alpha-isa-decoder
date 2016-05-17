@@ -22,13 +22,13 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
                                   "Input must be a string.");
     }*/
     
-    uint64_t raw;
+    uint32_t raw;
 
     std::stringstream ss;
     std::stringstream outputStream;
     std::cout.rdbuf(outputStream.rdbuf()); //Redirect cout
 
-    char inputCharString[19];
+    char inputCharString[11];
     mxGetString(prhs[0], inputCharString, 11);
     std::string instString(inputCharString);
     ss << std::hex << instString;
@@ -36,7 +36,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
 
     std::cout << "Raw input: " << instString << std::endl;
     std::cout.fill('0');
-    std::cout << "Interpreted as: 0x" << std::hex << std::setw(16) << raw << std::dec << std::endl;
+    std::cout << "Interpreted as: 0x" << std::hex << std::setw(8) << raw << std::dec << std::endl;
     std::cout.fill(' ');
     
     AlphaISA::ExtMachInst inst = static_cast<AlphaISA::ExtMachInst>(raw);

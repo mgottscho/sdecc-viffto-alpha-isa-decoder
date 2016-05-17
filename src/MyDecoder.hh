@@ -38,6 +38,7 @@ namespace AlphaISA
 {
 
 typedef uint64_t ExtMachInst;
+extern uint64_t FullSystemInt;
 
 class Decoder
 {
