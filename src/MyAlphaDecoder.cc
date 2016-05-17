@@ -22,7 +22,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
                                   "Input must be a string.");
     }*/
     
-    uint32_t raw;
+    uint64_t raw;
 
     std::stringstream ss;
     std::stringstream outputStream;
@@ -36,12 +36,12 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
 
     std::cout << "Raw input: " << instString << std::endl;
     std::cout.fill('0');
-    std::cout << "Interpreted as: 0x" << std::hex << std::setw(8) << raw << std::dec << std::endl;
+    std::cout << "Interpreted as: 0x" << std::hex << std::setw(16) << raw << std::dec << std::endl;
     std::cout.fill(' ');
     
-    MipsISA::ExtMachInst inst = static_cast<MipsISA::ExtMachInst>(raw);
+    AlphaISA::ExtMachInst inst = static_cast<AlphaISA::ExtMachInst>(raw);
 
-    MipsISA::Decoder decoder;
+    AlphaISA::Decoder decoder;
     std::cout << "Disassembly: ";
     bool ret = decoder.decodeInst(inst);
     std::cout << "Result: ";
