@@ -7,7 +7,7 @@
 int main(int argc, char** argv) {
     if (argc != 2) {
         std::cout << "Usage: alphadecode <INST>" << std::endl;
-        std::cout << "where <INST> is a 32-bit ALPHA instruction specified in LITTLE-ENDIAN hexadecimal format, e.g., 0xDEADBEEF." << std::endl;
+        std::cout << "where <INST> is a 32-bit ALPHA instruction specified in LITTLE-ENDIAN hexadecimal format, DEADBEEF -- do not include the 0x or 0h prefix." << std::endl;
         return 1;
     }
     
@@ -17,10 +17,10 @@ int main(int argc, char** argv) {
     
     //Switch little to big endian on input string
     std::string after(instString);
-    after.replace(2,2,instString.substr(8,2));
-    after.replace(4,2,instString.substr(6,2));
-    after.replace(6,2,instString.substr(4,2));
-    after.replace(8,2,instString.substr(2,2));
+    after.replace(0,2,instString.substr(6,2));
+    after.replace(2,2,instString.substr(4,2));
+    after.replace(4,2,instString.substr(2,2));
+    after.replace(6,2,instString.substr(0,2));
 
     //Use the converted value
     std::stringstream ss;

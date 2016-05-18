@@ -22,21 +22,33 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
                                   "Input must be a string.");
     }*/
     
-    uint32_t raw;
 
-    std::stringstream ss;
+    //redirect stdout
     std::stringstream outputStream;
-    std::cout.rdbuf(outputStream.rdbuf()); //Redirect cout
+    std::cout.rdbuf(outputStream.rdbuf());
 
-    char inputCharString[11];
-    mxGetString(prhs[0], inputCharString, 11);
+    //Get raw input
+    char inputCharString[9];
+    mxGetString(prhs[0], inputCharString, 8);
+    inputCharString[8] = '\0';
     std::string instString(inputCharString);
-    ss << std::hex << instString;
+    std::cout << "Raw input: " << instString << std::endl;
+
+    //Switch little to big endian on input string
+    std::string after(instString);
+    after.replace(0,2,instString.substr(6,2));
+    after.replace(2,2,instString.substr(4,2));
+    after.replace(4,2,instString.substr(2,2));
+    after.replace(6,2,instString.substr(0,2));
+
+    //Use the converted value
+    std::stringstream ss;
+    uint32_t raw;
+    ss << std::hex << after;
     ss >> raw;
 
-    std::cout << "Raw input: " << instString << std::endl;
     std::cout.fill('0');
-    std::cout << "Interpreted as: 0x" << std::hex << std::setw(8) << raw << std::dec << std::endl;
+    std::cout << "Interpreted as: 0x" << std::hex << std::setw(8) << raw << std::dec << " (internal little to big endian conversion)" << std::endl;
     std::cout.fill(' ');
     
     AlphaISA::ExtMachInst inst = static_cast<AlphaISA::ExtMachInst>(raw);
