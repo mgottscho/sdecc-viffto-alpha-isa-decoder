@@ -29,7 +29,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) {
 
     //Get raw input
     char inputCharString[9];
-    mxGetString(prhs[0], inputCharString, 8);
+    mxGetString(prhs[0], inputCharString, 9);
     inputCharString[8] = '\0';
     std::string instString(inputCharString);
     std::cout << "Raw input: " << instString << std::endl;
