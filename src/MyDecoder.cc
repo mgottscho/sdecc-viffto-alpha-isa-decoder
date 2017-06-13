@@ -1,3 +1,9 @@
+/*
+ * Hacks by:
+ * Author: Mark Gottscho
+ * Email: mgottscho@ucla.edu
+ */
+
 #include "decoder.hh"
 #include "MyDecoder.hh"
 #include <iostream>

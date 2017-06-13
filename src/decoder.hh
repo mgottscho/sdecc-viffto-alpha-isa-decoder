@@ -1,3 +1,8 @@
+/*
+ * Author: Mark Gottscho
+ * Email: mgottscho@ucla.edu
+ */
+
 #ifndef DECODER_HH
 #define DECODER_HH
 

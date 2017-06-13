@@ -28,6 +28,12 @@
  * Authors: Gabe Black
  */
 
+/*
+ * Hacks by:
+ * Author: Mark Gottscho
+ * Email: mgottscho@ucla.edu
+ */
+
 #ifndef __ARCH_ALPHA_DECODER_HH__
 #define __ARCH_ALPHA_DECODER_HH__
 
